@@ -6,11 +6,11 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:20:31 by nneronin          #+#    #+#             */
-/*   Updated: 2019/11/13 17:12:43 by nneronin         ###   ########.fr       */
+/*   Updated: 2020/09/26 12:22:57 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static int	ft_string_edit(char **file, const int fd, char **line, int char_nbr)
 {
@@ -42,15 +42,15 @@ static int	ft_string_edit(char **file, const int fd, char **line, int char_nbr)
 int			get_next_line(const int fd, char **line)
 {
 	static char		*file[4096];
-	char			read_buffer[BUFF_SIZE + 1];
+	char			read_buffer[GNL_BUFF_SIZE + 1];
 	int				char_nbr;
 	char			*temp_storage;
 
-	if (fd < 0 || !line || BUFF_SIZE < 1 || fd > 4096)
+	if (fd < 0 || !line || GNL_BUFF_SIZE < 1 || fd > 4096)
 		return (-1);
 	if (file[fd] == 0)
 		file[fd] = ft_strnew(0);
-	while ((char_nbr = read(fd, read_buffer, BUFF_SIZE)) > 0)
+	while ((char_nbr = read(fd, read_buffer, GNL_BUFF_SIZE)) > 0)
 	{
 		read_buffer[char_nbr] = '\0';
 		temp_storage = ft_strjoin(file[fd], read_buffer);
