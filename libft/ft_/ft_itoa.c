@@ -6,36 +6,49 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:18:53 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/26 15:40:13 by nneronin         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:17:10 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char			*ft_itoa(int n)
+static int		get_nb_size(unsigned int nb)
 {
-	int		nbrcount;
-	int		i;
-	char	*str;
-	int		neg;
+	unsigned int	size;
 
-	i = 0;
-	nbrcount = ft_nbrlen(n);
-	if (!(str = ft_strnew(nbrcount)))
-		return (0);
-	if (n == -2147483648)
-		return (ft_strcpy(str, "-2147483648"));
-	neg = n < 0 ? -1 : 0;
-	n *= n < 0 ? -1 : 1;
-	while (nbrcount + neg > 0)
+	size = 0;
+	while (nb >= 10)
 	{
-		str[i] = (n % 10) + '0';
-		n = n / 10;
-		i++;
-		nbrcount--;
+		nb /= 10;
+		++size;
 	}
-	neg == -1 ? str[i] = '-' : 0;
-	i += neg == -1 ? 1 : 0;
-	str = ft_reverse(str);
+	return (size + 1);
+}
+
+char			*ft_itoa(int nbr)
+{
+	char			*str;
+	unsigned int	nb;
+	unsigned int	index;
+	unsigned int	size;
+
+	if (nbr < 0)
+		nb = (unsigned int)(nbr * -1);
+	else
+		nb = (unsigned int)nbr;
+	size = (unsigned int)get_nb_size(nb);
+	index = 0;
+	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)))))
+		return (0);
+	if (nbr < 0 && (str[index] = '-'))
+		size++;
+	index = size - 1;
+	while (nb >= 10)
+	{
+		str[index--] = (char)(nb % 10 + 48);
+		nb /= 10;
+	}
+	str[index] = (char)(nb % 10 + 48);
+	str[size] = '\0';
 	return (str);
 }
