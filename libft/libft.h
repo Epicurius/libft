@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/26 13:21:56 by nneronin         ###   ########.fr       */
+/*   Updated: 2020/10/27 15:21:29 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ long				ft_atoi(const char *str);
 size_t				ft_nbrlen(int nbr);
 double				ft_timer_end(void);
 double				ft_pow(double n, int pow);
+float				ft_pythagoras(float a, float b);
 
 #endif
