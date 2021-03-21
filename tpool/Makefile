@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= t_pool.a
+NAME	= tpool.a
 FLAGS	= -Wall -Wextra -Werror
 SRCS	=	init_tpool.c	\
 	  		tpool_free.c	\
