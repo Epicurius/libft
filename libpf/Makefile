@@ -30,7 +30,7 @@ OBJS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	@gcc -c $(SRCS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)

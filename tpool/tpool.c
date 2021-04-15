@@ -32,7 +32,7 @@ void	do_task(t_tpool *tpool)
 	task = get_task(tpool);
 	tpool->running_threads += 1;
 	pthread_mutex_unlock(&tpool->mutex);
-	if (task->func(task->arg))
+	if (!task->func(task->arg))
 		tpool->error = 1;
 	if (task)
 	{
@@ -77,7 +77,7 @@ void	*tpool_func(void *arg)
 int		tpool_wait(t_tpool *tpool)
 {
 	if (!tpool)
-		return (0);
+		return (1);
 	pthread_mutex_lock(&tpool->mutex);
 	while ((!tpool->stop && tpool->running_threads > 0)
 			|| (tpool->stop && tpool->alive_threads > 0)
@@ -85,6 +85,6 @@ int		tpool_wait(t_tpool *tpool)
 		pthread_cond_wait(&tpool->main_cond, &tpool->mutex);
 	pthread_mutex_unlock(&tpool->mutex);
 	if (tpool->error)
-		return (-1);
-	return (0);
+		return (tpool_error(-1));
+	return (1);
 }

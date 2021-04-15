@@ -17,9 +17,9 @@ SRCS := $(shell find $(CDIR) -type f | grep -E "\.c$$")
 OBJS = $(notdir $(SRCS:.c=.o))
 CFLAGS = -Wall -Wextra -Werror -I $(IDIR)
 
-all: $(ODIR) $(NAME)
+all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	@gcc -c $(SRCS) $(CFLAGS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)

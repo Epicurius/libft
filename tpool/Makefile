@@ -12,15 +12,16 @@
 
 NAME	= tpool.a
 FLAGS	= -Wall -Wextra -Werror
-SRCS	=	init_tpool.c	\
-	  		tpool_free.c	\
-			tpool.c			\
+SRCS	=	init_tpool.c\
+	  	tpool_free.c\
+		tpool.c\
+		tpool_error.c\
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	@gcc -c $(SRCS) -pthread
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)

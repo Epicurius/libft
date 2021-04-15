@@ -46,8 +46,9 @@ void					do_task(t_tpool *tpool);
 void					delet_task(t_task *task);
 int						free_tpool(t_tpool *tpool);
 void					*tpool_func(void *arg);
-void					*tpool_add(t_tpool *tpool,
+int						tpool_add(t_tpool *tpool,
 int						(*func)(void *), void *arg);
 int						tpool_wait(t_tpool *tpool);
+int					tpool_error(int i);
 
 #endif
