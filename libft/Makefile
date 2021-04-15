@@ -11,19 +11,16 @@
 # **************************************************************************** #
 
 NAME = libft.a
-SRC_DIR	= .
-INC_DIR = .
-OBJ_DIR	= ./obj
-SRCS := $(shell find $(SRC_DIR) -type f | grep -E "\.c$$")
+IDIR = .
+CDIR = mem is put random str
+SRCS := $(shell find $(CDIR) -type f | grep -E "\.c$$")
+OBJS = $(notdir $(SRCS:.c=.o))
+CFLAGS = -Wall -Wextra -Werror -I $(IDIR)
 
-OBJ = $(SRCS:.c=.o)
-OBJS = $(notdir $(OBJ))
-FLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
-
-all: $(NAME)
+all: $(ODIR) $(NAME)
 
 $(NAME):
-	@gcc -c $(SRCS) $(FLAGS)
+	@gcc -c $(SRCS) $(CFLAGS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@/bin/rm -f $(OBJS)

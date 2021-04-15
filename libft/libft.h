@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # define GNL_BUFF_SIZE 9
+# define GNL_FILE_NB 128
 
 # define TRUE			1
 # define FALSE			0
@@ -32,6 +33,12 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_gnl
+{
+	int		cnbr;
+	int		tnbr;
+}			t_gnl;
 
 /*
 ** -------------------------------- FT_LST ------------------------------------
@@ -120,6 +127,7 @@ int					ft_atoi_base(const char *str, int str_base);
 int					ft_max(int a, int b);
 int					ft_min(int a, int b);
 int					get_next_line(const int fd, char **line);
+int					gnl(const int fd, int buff_size, char **line);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_itoa(int n);
