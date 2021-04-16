@@ -13,6 +13,34 @@
 #include "./libft.h"
 #include <stdio.h>
 
+int		ft_atoi(const char *str)
+{
+	int res;
+	int i;
+	int neg;
+
+	res = 0;
+	i = 0;
+	neg = 1;
+	if (!str[i])
+		return (0);
+	while (str[i] == ' ' || (str[i] > 8 && str[i] < 14))
+		i++;
+	if (str[i] == '-')
+	{
+		neg = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] > 47 && str[i] < 58)
+	{
+		res = 10 * res + (str[i] - 48);
+		i++;
+	}
+	return (neg * res);
+}
+/*
 long	ft_atoi(const char *str)
 {
 	long	r;
@@ -40,4 +68,4 @@ long	ft_atoi(const char *str)
 	}
 	r *= negative;
 	return (r);
-}
+}*/
