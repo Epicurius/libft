@@ -16,7 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# define GNL_BUFF_SIZE 9
+# define GNL_BUFF_SIZE 60
 # define GNL_FILE_NB 128
 
 # define TRUE			1
@@ -106,6 +106,7 @@ char				**ft_strsplit(char const *s, char c);
 size_t				ft_strspn(const char *s, const char *accept);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
+int				ft_strarr_func(char **arr, void (*f)(char **));
 /*
 ** --------------------------- FT_PUT functions -------------------------
 */
@@ -120,12 +121,19 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 /*
-** --------------------------- FT_* functions -------------------------
+** --------------------------- MATH functions -------------------------
+*/
+double				ft_min(double a, double b);
+double				ft_max(double a, double b);
+size_t				ft_nbrlen(int nbr);
+double				ft_pow(double n, int pow);
+float				ft_pythagoras(float a, float b);
+double				ft_clamp(double x, double a, double b);
+/*
+** --------------------------- RAND functions -------------------------
 */
 int					ft_wordcount(const char *s, char c);
 int					ft_atoi_base(const char *str, int str_base);
-int					ft_max(int a, int b);
-int					ft_min(int a, int b);
 int					get_next_line(const int fd, char **line);
 int					gnl(const int fd, int buff_size, char **line);
 int					ft_toupper(int c);
@@ -136,9 +144,7 @@ void				ft_timer_start(void);
 void				ft_bzero(void *s, size_t n);
 int				ft_atoi(const char *str);
 double				ft_atof(const char *str);
-size_t				ft_nbrlen(int nbr);
 double				ft_timer_end(void);
-double				ft_pow(double n, int pow);
-float				ft_pythagoras(float a, float b);
+
 
 #endif

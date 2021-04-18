@@ -12,7 +12,7 @@
 
 NAME = libft.a
 IDIR = .
-CDIR = mem is put random str
+CDIR = mem is put str math rand
 SRCS := $(shell find $(CDIR) -type f | grep -E "\.c$$")
 OBJS = $(notdir $(SRCS:.c=.o))
 CFLAGS = -Wall -Wextra -Werror -I $(IDIR)

@@ -25,7 +25,7 @@ void	*ft_realloc(void *ptr, size_t new_size)
 
 	if (!new_size && ptr)
 	{
-		if (!(new = (char *)malloc(1)))
+		if (!(new = (char *)ft_memalloc(1)))
 			return (NULL);
 		ft_memdel(&ptr);
 		return (new);
