@@ -6,13 +6,13 @@
 #    By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/18 11:13:47 by nneronin          #+#    #+#              #
-#    Updated: 2020/09/26 12:20:40 by nneronin         ###   ########.fr        #
+#    Updated: 2021/04/26 10:18:16 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 IDIR = .
-CDIR = mem is put str math rand
+CDIR = mem is put str lst math rand
 SRCS := $(shell find $(CDIR) -type f | grep -E "\.c$$")
 OBJS = $(notdir $(SRCS:.c=.o))
 CFLAGS = -Wall -Wextra -Werror -I $(IDIR)
