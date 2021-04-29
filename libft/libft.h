@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2020/10/27 15:21:29 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/04/29 14:01:41 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@
 
 typedef struct		s_list
 {
+	struct s_list	*next;
 	void			*content;
 	size_t			content_size;
-	struct s_list	*next;
+	struct s_list	*prev;
 }					t_list;
 
 typedef struct		s_gnl
@@ -43,6 +44,7 @@ typedef struct		s_gnl
 /*
 ** -------------------------------- FT_LST ------------------------------------
 */
+int					ft_lstcontains(t_list *lst, void *content);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);

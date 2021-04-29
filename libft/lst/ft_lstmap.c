@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:43:39 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/23 19:14:39 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/04/29 13:58:55 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*copy;
-	t_list	*newlist;
+	t_list	*res;
+	t_list	*tmp;
 
-	if (!lst)
-		return (0);
-	copy = f(lst);
-	newlist = copy;
-	while (lst->next)
+	if (!lst || !f)
+		return (NULL);
+	res = f(lst);
+	tmp = res;
+	while (lst->next != NULL)
 	{
 		lst = lst->next;
-		copy->next = f(lst);
-		if (copy->next == lst)
-		{
-			free(copy->next);
-			return (NULL);
-		}
-		copy = copy->next;
+		tmp->next = f(lst);
+		tmp = tmp->next;
 	}
-	return (newlist);
+	return (res);
 }

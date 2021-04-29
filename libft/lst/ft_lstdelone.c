@@ -6,14 +6,18 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 10:46:48 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/23 13:45:33 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/04/29 14:23:41 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
 {
+	if (alst == NULL)
+		return ;
+	(*alst)->prev->next = (*alst)->next;
+	(*alst)->next->prev = (*alst)->prev;
 	del((*alst)->content, (*alst)->content_size);
 	free(*alst);
 	*alst = NULL;

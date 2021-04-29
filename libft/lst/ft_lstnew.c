@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 09:46:41 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 16:26:02 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/04/29 14:29:05 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list *x;
+	t_list	*new;
 
-	if (!(x = (t_list*)malloc(sizeof(t_list))))
-		return (NULL);
+	if (!(new = (t_list*)ft_memalloc(sizeof(*new))))
+		return (0);
 	if (content == NULL)
 	{
-		x->content = NULL;
-		x->content_size = 0;
+		new->content = NULL;
+		new->content_size = 0;
+		new->next = NULL;
+		new->prev = NULL;
+		return (new);
 	}
-	else
-	{
-		if (!(x->content = (void *)malloc(sizeof(content_size))))
-			return (0);
-		x->content = ft_memcpy(x->content, content, content_size);
-		x->content_size = content_size;
-	}
-	x->next = NULL;
-	return (x);
+	if (!(new->content = malloc(content_size)))
+		return (0);
+	ft_memmove(new->content, content, content_size);
+	new->content_size = content_size;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
 }

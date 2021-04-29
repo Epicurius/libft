@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:28:02 by nneronin          #+#    #+#             */
-/*   Updated: 2020/08/05 15:24:48 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/04/29 13:55:37 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,18 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (alst && new)
+	if (!new || !alst)
+		return ;
+	if (!(*alst))
 	{
-		new->next = *alst;
-		*alst = new;
+		(*alst) = new;
+		(*alst)->next = NULL;
+		(*alst)->prev = NULL;
+	}
+	else
+	{
+		new->next = (*alst);
+		new->next->prev = new;
+		(*alst) = new;
 	}
 }
