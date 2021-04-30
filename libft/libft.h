@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/04/30 13:18:39 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/04/30 13:48:39 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct		s_gnl
 /*
 ** -------------------------------- FT_LST ------------------------------------
 */
+int					ft_lstadd_new(t_list **list, void *content, size_t content_size);
 int					ft_lstcontains(t_list *lst, void *content);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
