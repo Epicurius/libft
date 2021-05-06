@@ -6,15 +6,15 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 12:13:51 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 16:52:18 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/06 10:43:33 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#include "ft_printf/ft_printf.h"
-#include "libft/libft.h"
+#include "./libpf/ft_printf.h"
+#include "./libft/libft.h"
 
 // gcc test_main.c libft/libft.a ft_printf/ft_printf.h
 

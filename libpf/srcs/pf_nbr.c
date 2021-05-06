@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 13:51:24 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 15:30:22 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/06 10:41:57 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ void		nbr_to_buffer(t_printf *p, intmax_t nbr, int len)
 	char		s[21];
 	uintmax_t	tmp;
 
-	tmp = POS(nbr);
+	tmp = labs(nbr);
 	while (tmp && (len += 1))
 		tmp /= 10;
 	if ((nbr < 0 || p->flag.plus || p->flag.space) && p->flag.zero)
 		p->preci -= 1;
-	p->printed = MAX(len, p->preci);
+	p->printed = ft_max(len, p->preci);
 	if (nbr < 0 || p->flag.plus || p->flag.space)
 		++p->printed;
 	p->padding = (p->printed > p->min_len) ? 0 : p->min_len - p->printed;
 	padding(p, 0);
-	tmp = POS(nbr);
+	tmp = labs(nbr);
 	nbr_fill(tmp, 10, s, p);
 	(p->flag.space) ? s[0] = ' ' : 0;
 	(nbr < 0) ? s[0] = '-' : 0;

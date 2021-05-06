@@ -45,11 +45,11 @@ void		nbr_base_to_buffer(t_printf *p, uintmax_t nbr, int b)
 		tmp /= b;
 	(p->flag.zero) ? p->preci = p->min_len : 0;
 	ext = (p->printed >= p->preci) ? 0 : 1;
-	p->printed = MAX(p->preci, p->printed);
+	p->printed = ft_max(p->preci, p->printed);
 	((p->flag.hash) && b == 8 && !ext) ? --p->min_len : 0;
 	((p->flag.hash) && b == 8 && !nbr && (p->fpreci)) ? ++p->printed : 0;
 	((p->flag.hash) && b == 16 && !(p->flag.zero)) ? p->min_len -= 2 : 0;
-	p->padding = MAX(0, (p->min_len - p->printed));
+	p->padding = ft_max(0, (p->min_len - p->printed));
 	padding(p, 0);
 	if (nbr && (p->flag.hash) && ((b == 8 && !ext) || (b == 16)))
 		p->buffer(p, "0", 1);

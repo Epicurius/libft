@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/04/30 13:48:39 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/06 10:38:29 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@
 # define FALSE			0
 # define MAX_INT		2147483647
 # define MIN_INT		-2147483648
-# define MAX(a, b)		((b & ((a - b) >> 31)) | (a & (~(a - b) >> 31)))
-# define MIN(a, b)		((a & ((a - b) >> 31)) | (b & (~(a - b) >> 31)))
-# define POS(n)			((n) < 0 ? 0 - (n) : (n))
 
 typedef struct		s_list
 {
@@ -34,12 +31,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*prev;
 }					t_list;
-
-typedef struct		s_gnl
-{
-	int		cnbr;
-	int		tnbr;
-}			t_gnl;
 
 /*
 ** -------------------------------- FT_LST ------------------------------------
@@ -139,7 +130,6 @@ double				ft_clamp(double x, double a, double b);
 int					ft_wordcount(const char *s, char c);
 int					ft_atoi_base(const char *str, int str_base);
 int					get_next_line(const int fd, char **line);
-int					gnl(const int fd, int buff_size, char **line);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_itoa(int n);
