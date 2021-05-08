@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 14:05:35 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:18:03 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ typedef struct s_list
 	size_t			content_size;
 	struct s_list	*prev;
 }					t_list;
+
+typedef	struct s_i2
+{
+	int				x;
+	int				y;
+}					t_i2;
+
+typedef struct s_xyz
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_xyz;
 
 /*
 ** -------------------------------- FT_LST ------------------------------------
@@ -125,6 +138,9 @@ size_t				ft_nbrlen(int nbr);
 double				ft_pow(double n, int pow);
 float				ft_pythagoras(float a, float b);
 double				ft_clamp(double x, double a, double b);
+t_xyz				ft_sum_xyz(t_xyz a, t_xyz b);
+int					ft_compare_xyz(t_xyz a, t_xyz b);
+t_xyz				ft_xyz(double x, double y, double z);
 /*
 ** --------------------------- RAND functions -------------------------
 */
