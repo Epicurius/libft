@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 10:14:42 by nneronin          #+#    #+#             */
-/*   Updated: 2020/11/09 13:05:01 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:52:32 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	tpool_add(t_tpool *tpool, int (*func)(void *), void *arg)
 
 	if (!func)
 		return (tpool_error(-5));
-	if (!(task = create_task(func, arg)))
+	task = create_task(func, arg);
+	if (!task)
 		return (tpool_error(-4));
 	pthread_mutex_lock(&tpool->mutex);
 	if (tpool->tasks)
@@ -35,7 +36,8 @@ t_task	*create_task(int (*func)(void*), void *arg)
 
 	if (!func)
 		return (NULL);
-	if (!(new_task = (t_task *)malloc(sizeof(t_task))))
+	new_task = (t_task *)malloc(sizeof(t_task));
+	if (!new_task)
 		return (NULL);
 	new_task->func = func;
 	new_task->arg = arg;
@@ -43,7 +45,7 @@ t_task	*create_task(int (*func)(void*), void *arg)
 	return (new_task);
 }
 
-int		init_tpool(t_tpool *tpool, int amount)
+int	init_tpool(t_tpool *tpool, int amount)
 {
 	int	i;
 
@@ -53,7 +55,8 @@ int		init_tpool(t_tpool *tpool, int amount)
 	pthread_cond_init(&tpool->task_cond, NULL);
 	pthread_cond_init(&tpool->main_cond, NULL);
 	tpool->nb_threads = amount;
-	if (!(tpool->threads = (pthread_t *)malloc(sizeof(pthread_t) * amount)))
+	tpool->threads = (pthread_t *)malloc(sizeof(pthread_t) * amount);
+	if (!tpool->threads)
 		return (tpool_error(-3));
 	bzero(tpool->threads, sizeof(pthread_t) * amount);
 	while (++i < amount)

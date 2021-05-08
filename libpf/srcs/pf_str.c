@@ -6,13 +6,13 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 13:59:37 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 15:59:26 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void			printf_null(t_printf *p)
+void	printf_null(t_printf *p)
 {
 	if (!(p->flag.zero))
 		p->buffer(p, "(null)", 6);
@@ -21,16 +21,16 @@ void			printf_null(t_printf *p)
 			p->buffer(p, "0", 1);
 }
 
-void			pf_str(t_printf *p)
+void	pf_str(t_printf *p)
 {
 	unsigned	c;
 	unsigned	*s;
 
-	if (!(s = va_arg(p->ap, unsigned*)))
+	if (!(s = va_arg(p->ap, unsigned *)))
 		printf_null(p);
 	else
 	{
-		p->printed = (int)(ft_strlen((char*)s));
+		p->printed = (int)(ft_strlen((char *)s));
 		p->fpreci ? p->printed = ft_min(p->printed, p->preci) : 0;
 		if ((p->padding = (p->min_len - p->printed)) > 0)
 		{
@@ -50,7 +50,7 @@ void			pf_str(t_printf *p)
 	}
 }
 
-size_t			ft_charlen(unsigned wc)
+size_t	ft_charlen(unsigned wc)
 {
 	if (wc < 0x80)
 		return (1);
@@ -63,7 +63,7 @@ size_t			ft_charlen(unsigned wc)
 	return (0);
 }
 
-static void		pf_putchar(t_printf *p, unsigned int wc,
+static void	pf_putchar(t_printf *p, unsigned int wc,
 		unsigned int wlen, unsigned int nb_bytes)
 {
 	char	tmp[4];
@@ -89,10 +89,11 @@ static void		pf_putchar(t_printf *p, unsigned int wc,
 	}
 }
 
-void			pf_char(t_printf *p)
+void	pf_char(t_printf *p)
 {
-	const unsigned c = va_arg(p->ap, unsigned);
-
+	unsigned c;
+	
+	c = va_arg(p->ap, unsigned);
 	if ((p->size & LONG || p->size & LLONG) && (!(p->printed = ft_charlen(c))))
 		p->len = -1;
 	else

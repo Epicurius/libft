@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 12:59:38 by nneronin          #+#    #+#             */
-/*   Updated: 2020/11/09 12:59:52 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:53:35 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	*tpool_func(void *arg)
 	int		id;
 	t_tpool	*tpool;
 
-	tpool = (t_tpool*)arg;
+	tpool = (t_tpool *)arg;
 	pthread_mutex_lock(&tpool->mutex);
 	id = tpool->alive_threads;
 	tpool->alive_threads += 1;
@@ -74,14 +74,14 @@ void	*tpool_func(void *arg)
 	return (0);
 }
 
-int		tpool_wait(t_tpool *tpool)
+int	tpool_wait(t_tpool *tpool)
 {
 	if (!tpool)
 		return (1);
 	pthread_mutex_lock(&tpool->mutex);
 	while ((!tpool->stop && tpool->running_threads > 0)
-			|| (tpool->stop && tpool->alive_threads > 0)
-			|| tpool->tasks)
+		|| (tpool->stop && tpool->alive_threads > 0)
+		|| tpool->tasks)
 		pthread_cond_wait(&tpool->main_cond, &tpool->mutex);
 	pthread_mutex_unlock(&tpool->mutex);
 	if (tpool->error)

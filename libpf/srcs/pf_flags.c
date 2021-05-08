@@ -6,11 +6,11 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 14:01:45 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 10:48:13 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static inline void	flag_type(t_printf *p)
 {

@@ -6,15 +6,15 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:47:14 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/18 14:06:02 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:32:58 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 char	*ft_strcpy(char *dest, const char *src)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (src[x] != '\0')

@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/08 14:18:43 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/08 14:19:18 by nneronin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "../libft.h"
+#include "libft.h"
 
-double		ft_atof(const char *str)
+double	ft_atof(const char *str)
 {
 	double	integral;
 	double	fractal;
 	char	*c;
-	int 	len;
+	int		len;
 
 	c = (char *)str;
 	integral = (double)abs(ft_atoi(c));

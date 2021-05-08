@@ -6,15 +6,15 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:14:50 by nneronin          #+#    #+#             */
-/*   Updated: 2020/02/26 19:03:40 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:45:48 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-static int		ft_wordlen(char const *str, char c, int x)
+static int	ft_wordlen(char const *str, char c, int x)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[x] != c && str[x])
@@ -25,7 +25,7 @@ static int		ft_wordlen(char const *str, char c, int x)
 	return (i);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**arr;
 	int		x[3];

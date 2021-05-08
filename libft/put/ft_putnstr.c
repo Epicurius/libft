@@ -6,15 +6,15 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 13:05:43 by nneronin          #+#    #+#             */
-/*   Updated: 2020/01/24 10:58:53 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:03:23 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 void	ft_putnstr(char *str, int n)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	if (*str == '\0')

@@ -6,11 +6,11 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 13:59:10 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 11:58:02 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void		pf_putnb_base(t_printf *p)
 {

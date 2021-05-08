@@ -6,13 +6,13 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 10:59:28 by nneronin          #+#    #+#             */
-/*   Updated: 2020/01/24 11:01:57 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:17:49 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-void		ft_putnchar(char c, int nbr)
+void	ft_putnchar(char c, int nbr)
 {
 	while (nbr > 0)
 	{

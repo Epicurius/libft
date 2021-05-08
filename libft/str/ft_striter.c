@@ -6,15 +6,15 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 11:00:11 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/20 11:32:04 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:34:51 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (s[x] != '\0')

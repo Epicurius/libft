@@ -6,11 +6,11 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 14:02:24 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 11:58:50 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void			padding(t_printf *p, int n)
 {

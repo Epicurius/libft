@@ -6,13 +6,13 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 16:14:11 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/28 12:50:43 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:28:03 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_reverse(char *s)
+char	*ft_reverse(char *s)
 {
 	char	*str;
 	int		i;
@@ -20,7 +20,8 @@ char		*ft_reverse(char *s)
 
 	j = 0;
 	i = ft_strlen(s);
-	if (!(str = (char *)malloc(sizeof(char) * i)))
+	str = (char *)malloc(sizeof(char) * i);
+	if (!str)
 		return (0);
 	while (i > 0)
 	{

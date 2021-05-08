@@ -6,11 +6,11 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:55:46 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 15:29:20 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void	color_cmd(t_printf *p, char *color, int code_len)
 {

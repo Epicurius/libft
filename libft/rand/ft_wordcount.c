@@ -6,16 +6,16 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:50:56 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/24 17:51:10 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:28:44 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-int		ft_wordcount(const char *s, char c)
+int	ft_wordcount(const char *s, char c)
 {
-	int wc;
-	int i;
+	int	wc;
+	int	i;
 
 	i = 0;
 	wc = 0;

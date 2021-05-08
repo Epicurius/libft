@@ -6,49 +6,63 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 13:18:53 by nneronin          #+#    #+#             */
-/*   Updated: 2020/10/01 17:17:10 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:27:23 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-static int		get_nb_size(unsigned int nb)
+static int	ft_get_size(int nbr)
 {
-	unsigned int	size;
+	int	size;
 
 	size = 0;
-	while (nb >= 10)
+	if (nbr <= 0)
+		size++;
+	while (nbr != 0)
 	{
-		nb /= 10;
-		++size;
+		nbr = nbr / 10;
+		size++;
 	}
-	return (size + 1);
+	return (size);
 }
 
-char			*ft_itoa(int nbr)
+static char	*ft_fillstr(int size, int i, int nbr, char *str)
 {
-	char			*str;
-	unsigned int	nb;
-	unsigned int	index;
-	unsigned int	size;
-
-	if (nbr < 0)
-		nb = (unsigned int)(nbr * -1);
-	else
-		nb = (unsigned int)nbr;
-	size = (unsigned int)get_nb_size(nb);
-	index = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)))))
-		return (0);
-	if (nbr < 0 && (str[index] = '-'))
-		size++;
-	index = size - 1;
-	while (nb >= 10)
+	while (size > i)
 	{
-		str[index--] = (char)(nb % 10 + 48);
-		nb /= 10;
+		str[size - 1] = nbr % 10 + '0';
+		nbr = nbr / 10;
+		size--;
 	}
-	str[index] = (char)(nb % 10 + 48);
-	str[size] = '\0';
+	return (str);
+}
+
+char	*ft_itoa(int nbr)
+{
+	int		i;
+	int		size;
+	char	*str;
+
+	i = 0;
+	size = 0;
+	size = ft_get_size(nbr);
+	str = ft_strnew(size);
+	if (!str)
+		return (0);
+	if (nbr == -2147483648)
+	{
+		str[0] = '-';
+		str[1] = '2';
+		nbr = 147483648;
+		i = 2;
+	}
+	if (nbr < 0)
+	{
+		str[0] = '-';
+		i = 1;
+		nbr = -nbr;
+	}
+	str = ft_fillstr(size, i, nbr, str);
 	return (str);
 }

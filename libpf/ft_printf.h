@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 13:49:30 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 16:46:07 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:59:24 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define MIN_LEN	(1 << 6)
 # define SIZE_T		(1 << 7)
 
-typedef	struct s_printf		t_printf;
-typedef	struct s_flag		t_flag;
+typedef struct s_printf	t_printf;
+typedef struct s_flag	t_flag;
 
 struct			s_flag
 {

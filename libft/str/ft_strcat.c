@@ -6,16 +6,16 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:16:17 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/21 09:42:06 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:31:17 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 char	*ft_strcat(char *dest, const char *src)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;

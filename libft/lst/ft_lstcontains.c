@@ -6,13 +6,13 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 13:57:49 by nneronin          #+#    #+#             */
-/*   Updated: 2021/04/29 13:58:01 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:09:00 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-int		ft_lstcontains(t_list *lst, void *content)
+int	ft_lstcontains(t_list *lst, void *content)
 {
 	t_list	*tmp;
 

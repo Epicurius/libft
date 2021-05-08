@@ -6,11 +6,11 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 13:41:55 by nneronin          #+#    #+#             */
-/*   Updated: 2021/04/30 13:48:09 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:03:23 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 int	ft_lstadd_new(t_list **list, void *content, size_t content_size)
 {
@@ -18,7 +18,7 @@ int	ft_lstadd_new(t_list **list, void *content, size_t content_size)
 
 	if (content == NULL)
 		return (0);
-	new = (t_list*)malloc(sizeof(*new));
+	new = (t_list *)malloc(sizeof(*new));
 	if (!new)
 		return (0);
 	new->content = content;

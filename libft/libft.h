@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/06 10:38:29 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:05:35 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define MAX_INT		2147483647
 # define MIN_INT		-2147483648
 
-typedef struct		s_list
+typedef struct s_list
 {
 	struct s_list	*next;
 	void			*content;
@@ -35,7 +35,8 @@ typedef struct		s_list
 /*
 ** -------------------------------- FT_LST ------------------------------------
 */
-int					ft_lstadd_new(t_list **list, void *content, size_t content_size);
+int					ft_lstadd_new(t_list **list, void *content,
+						size_t content_size);
 int					ft_lstcontains(t_list *lst, void *content);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -47,7 +48,7 @@ t_list				*ft_dellstnode(t_list **lst, t_list *del);
 /*
 ** -------------------------------- FT_MEM ------------------------------------
 */
-int				ft_memcmp(const void *s1, const void *s2, size_t n);
+int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memchr(const void *str, int c, size_t n);
 void				*ft_memcpy(void *str1, const void *str2, size_t n);
@@ -101,7 +102,7 @@ char				**ft_strsplit(char const *s, char c);
 size_t				ft_strspn(const char *s, const char *accept);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
-int				ft_strarr_func(char **arr, void (*f)(char **));
+int					ft_strarr_func(char **arr, void (*f)(char **));
 /*
 ** --------------------------- FT_PUT functions -------------------------
 */
@@ -136,9 +137,8 @@ char				*ft_itoa(int n);
 char				*ft_reverse(char *s);
 void				ft_timer_start(void);
 void				ft_bzero(void *s, size_t n);
-int				ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 double				ft_atof(const char *str);
 double				ft_timer_end(void);
-
 
 #endif

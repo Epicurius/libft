@@ -6,13 +6,15 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 15:11:05 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/24 15:11:07 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:03:23 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 double	ft_pow(double n, int pow)
 {
-	return (pow ? n * ft_pow(n, pow - 1) : 1);
+	if (pow > 0)
+		return (n * ft_pow(n, pow - 1));
+	return (1);
 }

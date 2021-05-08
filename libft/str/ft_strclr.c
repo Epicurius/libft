@@ -6,15 +6,15 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 10:53:23 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/20 10:59:32 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:32:27 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 void	ft_strclr(char *s)
 {
-	size_t x;
+	size_t	x;
 
 	x = 0;
 	while (s[x] != '\0')

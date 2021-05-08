@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 10:13:13 by nneronin          #+#    #+#             */
-/*   Updated: 2020/11/09 13:02:51 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:55:12 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef struct			s_task
+typedef struct s_task
 {
 	int					(*func)(void *);
 	void				*arg;
 	struct s_task		*next;
 }						t_task;
 
-typedef struct			s_tpool
+typedef struct s_tpool
 {
 	pthread_t			*threads;
 	t_task				*tasks;
@@ -47,8 +47,8 @@ void					delet_task(t_task *task);
 int						free_tpool(t_tpool *tpool);
 void					*tpool_func(void *arg);
 int						tpool_add(t_tpool *tpool,
-int						(*func)(void *), void *arg);
+							int (*func)(void *), void *arg);
 int						tpool_wait(t_tpool *tpool);
-int					tpool_error(int i);
+int						tpool_error(int i);
 
 #endif

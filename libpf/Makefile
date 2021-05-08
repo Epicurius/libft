@@ -6,12 +6,21 @@
 #    By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 13:48:12 by nneronin          #+#    #+#              #
-#    Updated: 2020/09/24 16:47:08 by nneronin         ###   ########.fr        #
+#    Updated: 2021/05/08 15:06:03 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+RED				:= "\e[0;31m"
+GREEN			:= "\e[0;32m"
+YELLOW			:= "\e[0;33m"
+BLUE			:= "\e[0;34m"
+MAGENTA			:= "\e[0;35m"
+CYAN			:= "\e[0;36m"
+RESET			:= "\e[0m"
+
 NAME = libpf.a
 LIBFT = libft
+IDIR = .
 DIR_S = srcs
 SOURCES = ft_printf.c \
 			pf_undefined.c \
@@ -27,19 +36,21 @@ SOURCES = ft_printf.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJS = $(SOURCES:.c=.o)
+CFLAGS = -Wall -Wextra -Werror -I $(IDIR) -I ../libft
 
 all: $(NAME)
+	@printf $(CYAN)"[INFO]	$(NAME) ready!\n"$(RESET)
 
 $(NAME): $(SRCS)
-	@gcc -c $(SRCS)
+	@gcc -c $(SRCS) $(CFLAGS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@/bin/rm -f $(OBJS)
-	@echo "libpf was successfully created."
+	@printf $(GREEN)"Compiling $(NAME)\n"$(RESET)
 
 clean:
 	@/bin/rm -f $(OBJS)
-	@echo "$(NAME) was cleaned."
+	@printf $(CYAN)"[INFO]	$(NAME) cleaned\n"$(RESET)
 
 fclean: clean
 	@/bin/rm -f $(NAME)

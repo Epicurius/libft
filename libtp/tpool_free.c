@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 10:36:46 by nneronin          #+#    #+#             */
-/*   Updated: 2020/11/09 13:05:31 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:56:24 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_task_list(t_task *tasks)
 	}
 }
 
-int		free_tpool(t_tpool *tpool)
+int	free_tpool(t_tpool *tpool)
 {
 	int		i;
 	t_task	*task;
@@ -53,7 +53,7 @@ int		free_tpool(t_tpool *tpool)
 	while (++i < tpool->nb_threads)
 		if (pthread_join(tpool->threads[i], NULL))
 			write(1, "Pthread_join error!\n", 20);
-	tpool_memdel((void**)&tpool->threads);
+	tpool_memdel((void **)&tpool->threads);
 	pthread_mutex_destroy(&tpool->mutex);
 	pthread_cond_destroy(&tpool->task_cond);
 	pthread_cond_destroy(&tpool->main_cond);

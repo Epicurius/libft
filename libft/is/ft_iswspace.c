@@ -6,13 +6,13 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 17:01:14 by nneronin          #+#    #+#             */
-/*   Updated: 2019/10/24 17:02:39 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 14:06:12 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_iswspace(int c)
+int	ft_iswspace(int c)
 {
 	if (c == '\t' || c == ' ' || c == '\n')
 		return (1);
