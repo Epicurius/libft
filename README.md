@@ -4,6 +4,6 @@ libft
 libpf
   - Printf rewrite
 
-tpool
+libtp
   - Thread pool function.
   - Thread function return 0 on error, !0 on success.
