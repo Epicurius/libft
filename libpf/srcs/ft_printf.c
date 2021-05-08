@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 14:04:52 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:27:15 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** --------------------------- prints args ------------------------------------
 */
 
-int		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_printf	p;
 	char		buff[PF_BUF];
@@ -37,7 +37,9 @@ int		ft_printf(const char *format, ...)
 			p.buffer(&p, &*p.format, 1);
 		++p.format;
 	}
-	write(p.fd, p.buff, p.buff_index - (p.len < 0 ? p.i : 0));
+	if (p.len < 0)
+		p.buff_index -= p.i;
+	write(p.fd, p.buff, p.buff_index);
 	va_end(p.ap);
 	return (p.len);
 }
@@ -68,8 +70,7 @@ char	*ft_sprintf(const char *format, ...)
 		++p.format;
 	}
 	p.buff[p.buff_index + 1] = '\0';
-	if (!(r = ft_strdup(p.buff)))
-		return (NULL);
+	r = ft_strdup(p.buff);
 	ft_strdel(&p.buff);
 	va_end(p.ap);
 	return (r);
@@ -79,7 +80,7 @@ char	*ft_sprintf(const char *format, ...)
 ** --------------------------- Prints to fd output ----------------------------
 */
 
-int		ft_fprintf(int fd, const char *format, ...)
+int	ft_fprintf(int fd, const char *format, ...)
 {
 	t_printf	p;
 	char		buff[PF_BUF];
@@ -100,7 +101,9 @@ int		ft_fprintf(int fd, const char *format, ...)
 			p.buffer(&p, &*p.format, 1);
 		++p.format;
 	}
-	write(p.fd, p.buff, p.buff_index - (p.len < 0 ? p.i : 0));
+	if (p.len < 0)
+		p.buff_index -= p.i;
+	write(p.fd, p.buff, p.buff_index);
 	va_end(p.ap);
 	return (p.len);
 }

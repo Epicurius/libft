@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 14:01:45 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:47:31 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,39 @@ static inline void	flag_type(t_printf *p)
 	}
 }
 
-void				read_flags(t_printf *p)
+static void	flag_star(t_printf *p)
 {
-	int nbr;
+	int	nbr;
 
 	nbr = 0;
+	p->flag.star = 0;
+	nbr = (int)va_arg(p->ap, int);
+	if (nbr < 0)
+	{
+		p->flag.minus = 0;
+		nbr = -nbr;
+	}
+	else
+		p->flag.minus = 0;
+	if (!(p->fpreci))
+		p->min_len = nbr;
+	else
+	{
+		if (!(p->flag.minus))
+			p->preci = nbr;
+		p->fpreci = 0;
+		if (!nbr)
+			p->fpreci = 1;
+	}
+}
+
+void	read_flags(t_printf *p)
+{
 	flag_type(p);
 	if ((p->flag.minus) && !(p->flag.star))
 		p->flag.zero = 0;
 	if (p->flag.plus)
 		p->flag.space = 0;
-	if (p->flag.star && (p->flag.star = 0))
-	{
-		if ((nbr = (int)va_arg(p->ap, int)) < 0)
-		{
-			p->flag.minus = 0;
-			nbr = -nbr;
-		}
-		else
-			p->flag.minus = 0;
-		if (!(p->fpreci))
-			p->min_len = nbr;
-		else
-		{
-			(!(p->flag.minus)) ? p->preci = nbr : 0;
-			p->fpreci = (!nbr) ? 1 : 0;
-		}
-	}
+	if (p->flag.star)
+		flag_star(p);
 }

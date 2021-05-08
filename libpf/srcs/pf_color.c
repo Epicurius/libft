@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:55:46 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/08 15:41:22 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	color_cmd(t_printf *p, char *color, int code_len)
 {
-	char *clr_code;
+	char	*clr_code;
 
 	clr_code = ft_strjoiner("\x1b[", color, "m", NULL);
 	p->buffer(p, clr_code, 5);
