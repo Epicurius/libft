@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= tpool.a
+NAME	= libtp.a
 FLAGS	= -Wall -Wextra -Werror
 SRCS	=	init_tpool.c\
 	  	tpool_free.c\
