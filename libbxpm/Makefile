@@ -6,7 +6,7 @@
 #    By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 10:44:15 by nneronin          #+#    #+#              #
-#    Updated: 2021/05/12 11:57:22 by nneronin         ###   ########.fr        #
+#    Updated: 2021/05/12 12:08:38 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,14 @@ SRCS	=	read_bmp.c \
 			read_bxpm.c \
 			surf_to_bmp.c \
 			surf_to_bxpm.c \
+			bmp_to_bxpm.c \
 			write_bmp.c \
 			write_bxpm.c \
 			byte_utils.c
 
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -I $(IDIR) -I ../libft -I ../libpf 
+CFLAGS = -Wall -Wextra -Werror -Wunused-variable -Wno-unused-result
+CFLAGS += -I $(IDIR) -I ../libft -I ../libpf 
 
 all: $(NAME)
 	@printf $(CYAN)"[INFO]	$(NAME) ready!\n"$(RESET)

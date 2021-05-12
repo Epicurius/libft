@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 13:35:55 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/12 11:59:10 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/12 12:07:20 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int				read_bmp(t_bmp *bmp, char *file);
 int				read_bxpm(t_bxpm *bxpm, char *file);
 t_bmp			*surface_to_bmp(int w, int h, int bpp, void *pixels);
 t_bxpm			*surface_to_bxpm(int w, int h, int bpp, void *pixels);
+t_bxpm			*bmp_to_bxpm(t_bmp *bmp);
 
 int32_t			read_int32(unsigned char *str, int index);
 int32_t			read_int16(unsigned char *str, int index);
