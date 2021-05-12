@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 13:20:28 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/12 10:55:23 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/12 11:46:48 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,32 @@ void	read_bxpm_pix(int fd, t_bxpm *bxpm)
 	free(pix);
 }
 
-void	read_bxpm(t_bxpm *bxpm, char *file)
+int	read_bxpm(t_bxpm *bxpm, char *file)
 {
-	int				x;
 	int				fd;
-	long long int	i;
 
 	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (0);
 	read_bxpm_header(fd, bxpm);
 	read_bxpm_clr(fd, bxpm);
 	read_bxpm_pix(fd, bxpm);
 	close(fd);
+	return (1);
 }
+/*
+t_bxpm	*read_bxpm1(char *file)
+{
+	int				fd;
+	t_bxpm			*bxpm;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	bxpm = ft_memalloc(sizeof(t_bxpm));
+	read_bxpm_header(fd, bxpm);
+	read_bxpm_clr(fd, bxpm);
+	read_bxpm_pix(fd, bxpm);
+	close(fd);
+	return (bxpm);
+}*/

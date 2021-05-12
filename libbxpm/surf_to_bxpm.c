@@ -6,11 +6,21 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 14:20:47 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/10 12:28:41 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/12 11:57:37 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bxpm.h"
+
+void	get_bxpm_header(t_bxpm *bxpm, int w, int h, int bpp)
+{
+	bxpm->w = w;
+	bxpm->h = h;
+	bxpm->bpp = bpp;
+	bxpm->clr_nb = 0;
+	bxpm->pix_nb = w * h;
+}
+
 unsigned short	check_clr(t_bxpm *bxpm, uint32_t clr)
 {
 	unsigned short	i;
@@ -27,21 +37,25 @@ unsigned short	check_clr(t_bxpm *bxpm, uint32_t clr)
 	return (bxpm->clr_nb - 1);
 }
 
-/*
-void	surf_to_bxpm(SDL_Surface *surf, t_bxpm *bxpm)
+void	get_bxpm_pixel_data(t_bxpm *bxpm, void *pixels, int bpp)
 {
 	int i;
 
-	bxpm->w = surf->w;
-	bxpm->h = surf->h;
-	bxpm->bpp = surf->format->BitsPerPixel;
-	bxpm->clr_nb = 0;
-	bxpm->pix_nb = surf->w * surf->h;
+	i = -1;
 	bxpm->clr = malloc(sizeof(uint32_t));
 	bxpm->pix = malloc(sizeof(unsigned short) * bxpm->pix_nb);
-	i = -1;
 	while (++i < bxpm->pix_nb)
 	{
-		bxpm->pix[i] = check_clr(bxpm, ((uint32_t *)surf->pixels)[i]);
+		bxpm->pix[i] = check_clr(bxpm, ((uint32_t *)pixels)[i]);
 	}
-}*/
+}
+
+t_bxpm	*surface_to_bxpm(int w, int h, int bpp, void *pixels)
+{
+	t_bxpm *bxpm;
+
+	bxpm = ft_memalloc(sizeof(t_bxpm));
+	get_bxpm_header(bxpm, w, h, bpp);
+	get_bxpm_pixel_data(bxpm, pixels, bpp);
+	return (bxpm);
+}

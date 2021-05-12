@@ -6,7 +6,7 @@
 #    By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 10:44:15 by nneronin          #+#    #+#              #
-#    Updated: 2021/05/10 15:21:35 by nneronin         ###   ########.fr        #
+#    Updated: 2021/05/12 11:57:22 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ IDIR 	=	.
 NAME	=	libbxpm.a
 SRCS	=	read_bmp.c \
 			read_bxpm.c \
-			bmp_to_bxpm.c \
 			surf_to_bmp.c \
 			surf_to_bxpm.c \
 			write_bmp.c \

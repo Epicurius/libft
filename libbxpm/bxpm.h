@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 13:35:55 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/12 11:02:33 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/12 11:59:10 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,18 @@ typedef struct s_bmp
 	unsigned char	*data;
 }				t_bmp;
 
+void			write_bmp(char *name, t_bmp *bmp);
+void			write_bxpm(t_bxpm *bxpm, char *path);
+void			write_bxpm2(t_bxpm *bxpm, char *path, char *name);
+int				read_bmp(t_bmp *bmp, char *file);
+int				read_bxpm(t_bxpm *bxpm, char *file);
+t_bmp			*surface_to_bmp(int w, int h, int bpp, void *pixels);
+t_bxpm			*surface_to_bxpm(int w, int h, int bpp, void *pixels);
+
 int32_t			read_int32(unsigned char *str, int index);
 int32_t			read_int16(unsigned char *str, int index);
 uint32_t		read_color32(unsigned char *str, int index);
 uint32_t		read_color24(unsigned char *str, int i);
 unsigned int	bpp_clr(double byte, unsigned char *str, uint32_t bpp);
-void			write_bmp(char *name, t_bmp *bmp);
-void			write_bxpm(t_bxpm *bxpm, char *path);
-void			write_bxpm2(t_bxpm *bxpm, char *path, char *name);
-void			create_path_and_name(char *file, char **path, char **name);
-void			free_converter(t_bmp *bmp, t_bxpm *bxpm, char *path, char *name);
-t_bmp			*read_bmp(char *file);
-void			read_bxpm(t_bxpm *bxpm, char *file);
-t_bxpm			*create_bxpm(t_bmp *bmp);
-t_bmp			*surface_to_bmp(int w, int h, int bpp, void *pixels);
 
 #endif
