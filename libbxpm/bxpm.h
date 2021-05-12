@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 13:35:55 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/10 17:44:09 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/12 11:02:33 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void			write_bxpm2(t_bxpm *bxpm, char *path, char *name);
 void			create_path_and_name(char *file, char **path, char **name);
 void			free_converter(t_bmp *bmp, t_bxpm *bxpm, char *path, char *name);
 t_bmp			*read_bmp(char *file);
+void			read_bxpm(t_bxpm *bxpm, char *file);
 t_bxpm			*create_bxpm(t_bmp *bmp);
 t_bmp			*surface_to_bmp(int w, int h, int bpp, void *pixels);
 

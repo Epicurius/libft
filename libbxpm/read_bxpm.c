@@ -6,21 +6,16 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 13:20:28 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/10 12:54:33 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/12 10:55:23 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bxpm.h"
 
-void	read_bxpm(t_bxpm *bxpm, char *file)
+void	read_bxpm_header(int fd, t_bxpm *bxpm)
 {
-	long long int i;
-	int x;
-	int fd;
-
-	fd = open(file, O_RDONLY);
-
 	unsigned char header[20];
+
 	read(fd, header, 20);
 	bxpm->w = read_int32(header, 0);
 	bxpm->h = read_int32(header, 4);
@@ -29,11 +24,17 @@ void	read_bxpm(t_bxpm *bxpm, char *file)
 	bxpm->bpp = read_int32(header, 16);
 	bxpm->clr = malloc(sizeof(uint32_t) * bxpm->clr_nb);
 	bxpm->pix = malloc(sizeof(unsigned short) * bxpm->pix_nb);
+}
 
-	unsigned char *clr;
+
+void	read_bxpm_clr(int fd, t_bxpm *bxpm)
+{
+	int				i;
+	int				x;
+	unsigned char	*clr;
+
 	i = 0;
 	x = 0;
-
 	clr = malloc(sizeof(unsigned char) * (bxpm->clr_nb * 4));
 	read(fd, clr, bxpm->clr_nb * 4);
 	while (i < bxpm->clr_nb * 4)
@@ -43,11 +44,17 @@ void	read_bxpm(t_bxpm *bxpm, char *file)
 		x++;
 	}
 	free(clr);
+}
 
-	unsigned char *pix;
+
+void	read_bxpm_pix(int fd, t_bxpm *bxpm)
+{
+	int				i;
+	int				x;
+	unsigned char	*pix;
+
 	i = 0;
 	x = 0;
-
    	pix = malloc(sizeof(unsigned char) * (bxpm->pix_nb * 2));
 	read(fd, pix, bxpm->pix_nb * 2);
 	while (i < bxpm->pix_nb * 2)
@@ -57,5 +64,17 @@ void	read_bxpm(t_bxpm *bxpm, char *file)
 		x++;
 	}
 	free(pix);
+}
+
+void	read_bxpm(t_bxpm *bxpm, char *file)
+{
+	int				x;
+	int				fd;
+	long long int	i;
+
+	fd = open(file, O_RDONLY);
+	read_bxpm_header(fd, bxpm);
+	read_bxpm_clr(fd, bxpm);
+	read_bxpm_pix(fd, bxpm);
 	close(fd);
 }
