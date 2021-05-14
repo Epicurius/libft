@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 15:18:03 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:34:04 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				*ft_realloc2(void *ptr, size_t old_size, size_t new_size);
 void				*ft_realloc(void *ptr, size_t new_size);
+void				*ft_memdup(const void *mem, size_t size);
 /*
 ** ------------------------------ FT_IS ---------------------------------------
 */
@@ -116,6 +117,8 @@ size_t				ft_strspn(const char *s, const char *accept);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 int					ft_strarr_func(char **arr, void (*f)(char **));
+void				ft_strrev(char *str);
+void				ft_strnrev(char *str, int len);
 /*
 ** --------------------------- FT_PUT functions -------------------------
 */
@@ -134,8 +137,9 @@ void				ft_putnbr_fd(int n, int fd);
 */
 double				ft_min(double a, double b);
 double				ft_max(double a, double b);
-size_t				ft_nbrlen(int nbr);
+int					ft_nbrlen(long nbr);
 double				ft_pow(double n, int pow);
+long double			ft_long_pow(long double n, int pow);
 float				ft_pythagoras(float a, float b);
 double				ft_clamp(double x, double a, double b);
 t_xyz				ft_sum_xyz(t_xyz a, t_xyz b);

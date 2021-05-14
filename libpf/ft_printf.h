@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 13:49:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 14:59:24 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/14 16:39:45 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdint.h>
 # include <stdbool.h>
 
-# define PF_BUF			64
+# define PF_BUF			2048
 
 # define SHORT		(1 << 1)
 # define SSHORT		(1 << 2)

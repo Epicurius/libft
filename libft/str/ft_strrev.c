@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 14:32:06 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/14 10:54:05 by nneronin         ###   ########.fr       */
+/*   Created: 2021/05/14 17:26:05 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/14 17:28:51 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_strrev(char *str)
 {
-	size_t		x;
-	char		*str;
-	const char	*source;
+	int		len;
+	int		i;
+	int		len_tmp;
+	char	tmp;
 
-	str = dst;
-	source = src;
-	x = 0;
-	if (!n || str == source)
-		return (dst);
-	while (x < n)
+	len = ft_strlen(str);
+	i = 0;
+	len_tmp = len;
+	while (i < len)
 	{
-		str[x] = source[x];
-		x++;
+		tmp = str[i];
+		str[i] = str[len - 1];
+		str[len - 1] = tmp;
+		i++;
+		len--;
 	}
-	return (dst);
+	str[len_tmp] = '\0';
 }
