@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_str.c                                           :+:      :+:    :+:   */
+/*   pf_char.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 12:14:03 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/15 20:37:47 by nneronin         ###   ########.fr       */
+/*   Created: 2021/05/14 12:13:28 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/15 20:34:53 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpf.h"
 
-static void	set_padding(t_pf *p, char *s)
+static void	set_padding(t_pf *p)
 {
-	if (p->precision)
-		p->padding.size = ft_strlen(s);
-	if (p->precision > 0 && p->precision < p->padding.size)
-		p->padding.size = p->precision;
+	p->padding.size = 1;
 	if (!p->flag.minus && p->flag.zero)
 		p->padding.zeros = p->min_width - p->padding.size;
 	space_padding(p, 0);
 }
 
-void	pf_str(t_pf *p)
+void	pf_char(t_pf *p)
 {
-	char	*s;
+	char	c;
 
-	s = va_arg(p->ap, char *);
-	if (s == NULL)
-		s = "(null)";
-	set_padding(p, s);
+	c = va_arg(p->ap, int);
+	set_padding(p);
 	put_left_spaces(p);
 	put_zeros(p);
-	if (p->precision != 0)
-		fill_buffer(p, s, p->padding.size);
+	fill_buffer(p, &c, 1);
 	put_right_spaces(p);
 }

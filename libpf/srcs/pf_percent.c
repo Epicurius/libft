@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_undefined.c                                     :+:      :+:    :+:   */
+/*   pf_percent.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/24 15:41:57 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 15:08:54 by nneronin         ###   ########.fr       */
+/*   Created: 2021/05/14 12:45:08 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/15 20:39:08 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libpf.h"
 
-void					no_specifier(t_printf *p)
+void	pf_putpercent(t_pf *p)
 {
-	if ((p->padding = p->min_len - 1) > 0)
-	{
-		padding(p, 0);
-		p->buffer(p, p->format, 1);
-		padding(p, 1);
-	}
-	else
-		p->buffer(p, p->format, 1);
+	if (!p->flag.minus && p->flag.zero)
+		p->padding.zeros = p->min_width - 1;
+	if (p->padding.zeros < 0)
+		p->padding.zeros = 0;
+	space_padding(p, 1);
+	put_left_spaces(p);
+	put_zeros(p);
+	fill_buffer(p, "%", 1);
+	put_right_spaces(p);
 }

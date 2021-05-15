@@ -1,80 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_nbr.c                                           :+:      :+:    :+:   */
+/*   pf_nbr_o.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/14 11:51:19 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/15 20:36:50 by nneronin         ###   ########.fr       */
+/*   Created: 2021/05/14 11:55:18 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/15 20:49:13 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpf.h"
 
-static void	pf_putlong(long nb, t_pf *p)
+void	set_zeros_base(t_pf *p, unsigned long nb, int base_len)
 {
-	char	c;
-
-	if (nb > 0)
-		nb = -nb;
-	if (nb > -10)
-	{
-		c = '0' - nb;
-		fill_buffer(p, &c, 1);
-	}
-	else
-	{
-		pf_putlong(nb / 10, p);
-		pf_putlong(nb % 10, p);
-	}
-}
-
-static void	set_padding(t_pf *p, long nb)
-{
-	if (nb < 0 || p->flag.plus || p->flag.space)
-		p->padding.sign = 1;
 	if (nb == 0 && p->precision != 0)
 		p->padding.size = 1;
 	while (nb != 0)
 	{
 		p->padding.size++;
-		nb /= 10;
+		nb /= base_len;
 	}
+	p->padding.zeros = 0;
 	if (p->precision != -1)
 		p->padding.zeros = p->precision - p->padding.size;
-	else if (!p->flag.minus && p->flag.zero)
-		p->padding.zeros = p->min_width - p->padding.size
-			- p->padding.sign;
+	else if ((!p->flag.minus && p->flag.zero))
+		p->padding.zeros = p->min_width - p->padding.size;
 	if (p->padding.zeros < 0)
 		p->padding.zeros = 0;
-	space_padding(p, p->padding.sign);
 }
 
-static long	type_cast(t_pf *p)
+static unsigned long	type_cast(t_pf *p)
 {
-	long	nb;
+	unsigned long	nb;
 
-	nb = va_arg(p->ap, long);
+	nb = va_arg(p->ap, unsigned long);
 	if (p->size_bytes == 1)
-		nb = (char)nb;
+		nb = (unsigned char)nb;
 	else if (p->size_bytes == 2)
-		nb = (int)nb;
+		nb = (unsigned int)nb;
 	else if (p->size_bytes == 4)
-		nb = (int)nb;
+		nb = (unsigned int)nb;
 	return (nb);
 }
 
-void	pf_nbr(t_pf *p)
+void	pf_nbr_o(t_pf *p)
 {
-	long	nb;
+	unsigned long	nb;
 
 	nb = type_cast(p);
-	set_padding(p, nb);
+	set_zeros_base(p, nb, 8);
+	if (p->flag.hash && ((!p->padding.zeros && nb) || (!p->precision && !nb)))
+		p->padding.size += 1;
+	space_padding(p, 0);
 	put_left_spaces(p);
-	put_sign(p, nb);
+	if (p->flag.hash && ((!p->padding.zeros && nb) || (!p->precision && !nb)))
+		fill_buffer(p, "0", 1);
 	put_zeros(p);
-	if (nb != 0 || p->precision != 0)
-		pf_putlong(nb, p);
+	if (p->precision || nb)
+		pf_base(p, nb, "01234567");
 	put_right_spaces(p);
 }

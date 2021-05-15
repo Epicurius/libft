@@ -1,70 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_flags.c                                         :+:      :+:    :+:   */
+/*   pf_padding.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/23 14:01:45 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 15:47:31 by nneronin         ###   ########.fr       */
+/*   Created: 2021/05/14 11:43:57 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/15 19:14:46 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libpf.h"
 
-static inline void	flag_type(t_printf *p)
+void	put_left_spaces(t_pf *p)
 {
-	while (ft_strchr("#+-0* ", *p->format))
+	while (p->padding.left_spaces > 0)
 	{
-		if (*p->format == '#')
-			p->flag.hash = 1;
-		else if (*p->format == ' ')
-			p->flag.space = 1;
-		else if (*p->format == '+')
-			p->flag.plus = 1;
-		else if (*p->format == '-')
-			p->flag.minus = 1;
-		else if (*p->format == '0')
-			p->flag.zero = 1;
-		else if (*p->format == '*')
-			p->flag.star = 1;
-		++p->format;
+		fill_buffer(p, " ", 1);
+		p->padding.left_spaces--;
 	}
 }
 
-static void	flag_star(t_printf *p)
+void	put_sign(t_pf *p, long nb)
 {
-	int	nbr;
-
-	nbr = 0;
-	p->flag.star = 0;
-	nbr = (int)va_arg(p->ap, int);
-	if (nbr < 0)
+	if (p->padding.sign)
 	{
-		p->flag.minus = 0;
-		nbr = -nbr;
-	}
-	else
-		p->flag.minus = 0;
-	if (!(p->fpreci))
-		p->min_len = nbr;
-	else
-	{
-		if (!(p->flag.minus))
-			p->preci = nbr;
-		p->fpreci = 0;
-		if (!nbr)
-			p->fpreci = 1;
+		if (nb < 0)
+			fill_buffer(p, "-", 1);
+		else if (p->flag.plus)
+			fill_buffer(p, "+", 1);
+		else if (p->flag.space)
+			fill_buffer(p, " ", 1);
 	}
 }
 
-void	read_flags(t_printf *p)
+void	put_zeros(t_pf *p)
 {
-	flag_type(p);
-	if ((p->flag.minus) && !(p->flag.star))
-		p->flag.zero = 0;
-	if (p->flag.plus)
-		p->flag.space = 0;
-	if (p->flag.star)
-		flag_star(p);
+	while (p->padding.zeros > 0)
+	{
+		fill_buffer(p, "0", 1);
+		p->padding.zeros--;
+	}
+}
+
+void	put_right_spaces(t_pf *p)
+{
+	while (p->padding.right_spaces > 0)
+	{
+		fill_buffer(p, " ", 1);
+		p->padding.right_spaces--;
+	}
 }

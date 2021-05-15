@@ -5,62 +5,117 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/23 14:01:17 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 15:49:21 by nneronin         ###   ########.fr       */
+/*   Created: 2021/05/14 18:26:06 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/15 20:41:39 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libpf.h"
+#include <math.h>
 
-static void	float_precision(double n, t_printf *p, long value, int b)
+static long double	pf_integer(t_pf *p, long double nb)
 {
-	int			len;
-	char		s[48];
-	unsigned	c;
+	long	integer;
 
-	c = 'a' - 10 - ((p->upcase) >> 1);
-	len = p->printed - 1 - p->preci;
-	while (p->preci--)
+	if (p->precision == -1)
+		p->precision = 6;
+	integer = (long)nb;
+	set_float_padding(p, integer, nb);
+	put_left_spaces(p);
+	if (p->padding.sign)
 	{
-		s[len + p->preci + 1] = value % b + ((value % b < 10) ? '0' : c);
-		value /= b;
+		if (nb < 0 || 1.0 / nb < 0)
+			fill_buffer(p, "-", 1);
+		else if (p->flag.plus)
+			fill_buffer(p, "+", 1);
+		else if (p->flag.space)
+			fill_buffer(p, " ", 1);
 	}
-	s[len] = '.';
-	value = (long)(n < 0 ? -n : n);
-	while (++p->preci < len)
-	{
-		s[len - p->preci - 1] = value % b + ((value % b < 10) ? '0' : c);
-		value /= b;
-	}
-	(p->fpreci && p->flag.zero) ? s[0] = ' ' : 0;
-	(p->flag.space) ? s[0] = ' ' : 0;
-	(n < 0) ? s[0] = '-' : 0;
-	(p->size && p->flag.plus && n >= 0) ? s[0] = '+' : 0;
-	if (b == 16 && (p->len += 2))
-		p->buffer(p, "0x", 2);
-	p->buffer(p, s, p->printed);
+	put_zeros(p);
+	return ((long double)integer);
 }
 
-void			pf_putdouble(t_printf *p)
+static long double	cast_float(t_pf *p)
 {
-	double		n;
-	long		tmp;
-	int			len;
-	double		decimal;
-	long		value;
+	long double	nb;
 
-	n = (double)va_arg(p->ap, double);
-	(p->flag.zero) ? p->preci = p->min_len : 0;
-	if (!(p->fpreci))
-		p->preci = 7;
-	len = 1;
-	tmp = (long)(n < 0 ? -n : n);
-	while (tmp && ++len)
-		tmp /= 10;
-	p->printed = p->preci + len + ((n < 0) ? 1 : 0);
-	decimal = (n < 0 ? -n : n);
-	decimal = (decimal - (long)(decimal)) * ft_pow(10, p->preci + 1);
-	decimal = ((long)decimal % 10 > 4) ? decimal / 10 + 1 : decimal / 10;
-	value = (long)decimal;
-	float_precision(n, p, value, 10);
+	if (p->size_bytes == 16)
+		nb = va_arg(p->ap, long double);
+	else
+		nb = va_arg(p->ap, double);
+	return (nb);
+}
+
+static int	pf_float_decimal(t_pf *p, long nb, int precision)
+{
+	int		i;
+	char	str[48];
+
+	i = 0;
+	while (nb > 0)
+	{
+		str[i] = (nb % 10) + '0';
+		nb = nb / 10;
+		i++;
+	}
+	while (i < precision)
+		str[i++] = '0';
+	ft_strnrev(str, i);
+	str[i++] = '\0';
+	fill_buffer(p, str, precision);
+	return (i);
+}
+
+static int	pf_float_integer(t_pf *p, long nb)
+{
+	int		i;
+	int		size;
+	char	str[48];
+
+	i = 0;
+	size = ft_nbrlen(nb);
+	if (nb == 0)
+	{
+		fill_buffer(p, "0", 1);
+		return (1);
+	}
+	if (nb > 0)
+		nb = -nb;
+	while (nb < 0)
+	{
+		str[i++] = '0' - (nb % 10);
+		nb = nb / 10;
+	}
+	ft_strnrev(str, i);
+	fill_buffer(p, str, size);
+	return (i + 1);
+}
+
+void	pf_float(t_pf *p)
+{
+	long double		nb;
+	long			integer;
+	long double		decimal;
+
+	nb = cast_float(p);
+	if (pf_nbr_inf(p, nb))
+		return ;
+	if (!p->precision && nb > 0)
+		nb += 0.4999999;
+	else if (!p->precision && nb < 0)
+		nb -= 0.4999999;
+	integer = pf_integer(p, nb);
+	decimal = nb - integer;
+	if (p->precision != 0)
+		decimal = fabsl(decimal) * ft_long_pow(10, p->precision) + 0.5;
+	if (ft_nbrlen((long)decimal) > p->precision && 0 < p->precision)
+	{
+		integer += 1;
+		decimal = 0;
+	}
+	pf_float_integer(p, integer);
+	if (p->precision != 0 || p->flag.hash)
+		fill_buffer(p, ".", 1);
+	pf_float_decimal(p, decimal, p->precision);
+	put_right_spaces(p);
 }
