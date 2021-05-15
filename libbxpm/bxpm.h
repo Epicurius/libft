@@ -6,14 +6,14 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 13:35:55 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/12 12:07:20 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/15 21:26:47 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	BXPM_H
 # define BXPM_H
 # include "../libft/libft.h"
-# include "../libpf/ft_printf.h"
+# include "../libpf/libpf.h"
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
