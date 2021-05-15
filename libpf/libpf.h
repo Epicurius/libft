@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/15 20:58:42 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/15 21:34:34 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,42 +68,38 @@ typedef struct s_pf
 	t_padding		padding;
 }					t_pf;
 
-int		ft_printf(const char *restrict format, ...);
-int		ft_dprintf(int fd, const char *restrict format, ...);
-char	*ft_sprintf(const char *restrict format, ...);
-void	init_data(t_pf *p, int fd);
-void	reset_options(t_pf *p);
-
-void	read_format(const char *format, t_pf *p);
-void	read_flags(t_pf *p);
-void	read_width(t_pf *p);
-void	read_precision(t_pf *p);
-void	read_wildcard(t_pf *p);
-void	read_size(t_pf *p);
-void	specifier_sorter(t_pf *p, int c);
-
-void	put_sign(t_pf *p, long nb);
-void	put_zeros(t_pf *p);
-void	put_right_spaces(t_pf *p);
-void	put_left_spaces(t_pf *p);
-
-void	pf_char(t_pf *p);
-void	pf_colors(t_pf *p);
-void	pf_float(t_pf *p);
-void	pf_invalid(t_pf *p);
-void	pf_nbr(t_pf *p);
-int		pf_nbr_inf(t_pf *p, long double nb);
-void	pf_nbr_o(t_pf *p);
-void	pf_nbr_u(t_pf *p);
-void	pf_nbr_x(t_pf *p);
-void	pf_putpercent(t_pf *p);
-void	pf_str(t_pf *p);
-
-void	space_padding(t_pf *p, int extra);
-void	pf_base(t_pf *p, unsigned long nb, char *base);
-void	fill_buffer(t_pf *p, const char *s, unsigned int size);
-void	set_float_padding(t_pf *p, long i_part, long double nb);
-void	set_float_padding(t_pf *p, long i_part, long double nb);
-void	set_zeros_base(t_pf *p, unsigned long nb, int base_len);
+int					ft_printf(const char *restrict format, ...);
+int					ft_dprintf(int fd, const char *restrict format, ...);
+char				*ft_sprintf(const char *restrict format, ...);
+void				init_data(t_pf *p, int fd);
+void				reset_options(t_pf *p);
+void				read_format(const char *format, t_pf *p);
+void				read_flags(t_pf *p);
+void				read_width(t_pf *p);
+void				read_precision(t_pf *p);
+void				read_wildcard(t_pf *p);
+void				read_size(t_pf *p);
+void				specifier_sorter(t_pf *p, int c);
+void				put_sign(t_pf *p, long nb);
+void				put_zeros(t_pf *p);
+void				put_right_spaces(t_pf *p);
+void				put_left_spaces(t_pf *p);
+void				pf_char(t_pf *p);
+void				pf_colors(t_pf *p);
+void				pf_float(t_pf *p);
+void				pf_invalid(t_pf *p);
+void				pf_nbr(t_pf *p);
+int					pf_nbr_inf(t_pf *p, long double nb);
+void				pf_nbr_o(t_pf *p);
+void				pf_nbr_u(t_pf *p);
+void				pf_nbr_x(t_pf *p);
+void				pf_putpercent(t_pf *p);
+void				pf_str(t_pf *p);
+void				space_padding(t_pf *p, int extra);
+void				pf_base(t_pf *p, unsigned long nb, char *base);
+void				fill_buffer(t_pf *p, const char *s, unsigned int size);
+void				set_float_padding(t_pf *p, long i_part, long double nb);
+void				set_float_padding(t_pf *p, long i_part, long double nb);
+void				set_zeros_base(t_pf *p, unsigned long nb, int base_len);
 
 #endif
