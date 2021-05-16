@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 15:11:05 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/14 17:24:32 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/16 11:09:58 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	ft_pow(double n, int pow)
 
 long double	ft_long_pow(long double n, int pow)
 {
-	long double tmp;
+	long double	tmp;
 
 	tmp = n;
 	if (pow == 0)
