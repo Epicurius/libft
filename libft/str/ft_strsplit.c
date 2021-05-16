@@ -3,53 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
+/*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 15:14:50 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/08 14:45:48 by nneronin         ###   ########.fr       */
+/*   Created: 2021/05/16 15:01:20 by nneronin          #+#    #+#             */
+/*   Updated: 2021/05/16 18:31:25 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
+#include <stdio.h>
 
-static int	ft_wordlen(char const *str, char c, int x)
+static void	ft_wcount(char *str, char c, int *wc, int *cc)
 {
-	int	i;
-
-	i = 0;
-	while (str[x] != c && str[x])
+	*cc = 0;
+	*wc = 0;
+	while (*str)
 	{
-		x++;
-		i++;
-	}
-	return (i);
-}
-
-char	**ft_strsplit(char const *s, char c)
-{
-	char	**arr;
-	int		x[3];
-
-	x[0] = 0;
-	x[1] = 0;
-	if (!(arr = (char **)malloc(sizeof(char *) * (ft_wordcount(s, c) + 1))))
-		return (0);
-	while (s[x[0]])
-	{
-		x[2] = 0;
-		if (s[x[0]] != c && s[x[0]])
+		if (*str && *str != c)
 		{
-			if (!(arr[x[1]] = (char *)malloc(ft_wordlen(s, c, x[0]) + 1)))
-				return (0);
-			ft_strncpy(arr[x[1]], (s + x[0]), ft_wordlen(s, c, x[0]));
-			x[2] += ft_wordlen(s, c, x[0]);
-			x[0] += ft_wordlen(s, c, x[0]);
-			arr[x[1]][x[2]] = '\0';
-			x[1]++;
+			*wc += 1;
+			while (*str && *str != c)
+			{
+				str++;
+				*cc += 1;
+			}
 		}
 		else
-			x[0]++;
+			str++;
 	}
-	arr[x[1]] = NULL;
-	return (arr);
 }
+
+char	**ft_strsplit(char *str, char c)
+{
+	void		*data1;
+	const char	**ptrs;
+	int			cc;
+	int			wc;
+	char		*data;
+
+	ft_wcount(str, c, &wc, &cc);
+	data1 = malloc(sizeof(char *) * (wc + 1) + (cc + wc));
+	ptrs = data1;
+	data = data1;
+	data += sizeof(char *) * (wc + 1);
+	while (*str)
+	{
+		if (*str != c)
+		{
+			*data = *str;
+			*ptrs = data;
+			str++;
+			data++;
+			while (*str && *str != c)
+			{
+				*data = *str;
+				data++;
+				str++;
+			}
+			*data = '\0';
+			data++;
+			*++ptrs = NULL;
+		}
+		else
+			str++;
+	}
+	return (data1);
+}
+/*
+int main(void)
+{
+	char **arr = ft_strsplit1("qwe:asd:zxc:", ':');
+	
+	int i = -1;
+	while (arr[++i] != NULL)
+		printf("%s\n", arr[i]);
+	free(arr);
+	return (1);
+}*/
