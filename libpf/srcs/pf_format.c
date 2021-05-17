@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_format.c                                     :+:      :+:    :+:   */
+/*   pf_format.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:17:33 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/15 18:54:05 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 18:27:42 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	read_format2(t_pf *p)
 		read_size(p);
 }
 
-void	read_format(const char *format, t_pf *p)
+void	pf_read_format(const char *format, t_pf *p)
 {
 	p->format = (char *)format;
 	while (*p->format)

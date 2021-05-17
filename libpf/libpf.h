@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/15 21:34:34 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 18:27:42 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define CYAN		"\x1b[36m"
 # define WHITE		"\x1b[37m"
 
-# define BUFF_SIZE	2048
+# define PF_BUFF_SIZE	2048
 
 typedef struct s_padding
 {
@@ -71,9 +71,9 @@ typedef struct s_pf
 int					ft_printf(const char *restrict format, ...);
 int					ft_dprintf(int fd, const char *restrict format, ...);
 char				*ft_sprintf(const char *restrict format, ...);
-void				init_data(t_pf *p, int fd);
+void				pf_init(t_pf *p, int fd);
 void				reset_options(t_pf *p);
-void				read_format(const char *format, t_pf *p);
+void				pf_read_format(const char *format, t_pf *p);
 void				read_flags(t_pf *p);
 void				read_width(t_pf *p);
 void				read_precision(t_pf *p);
