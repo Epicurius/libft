@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/14 17:34:04 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 15:56:58 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_list
 	struct s_list	*prev;
 }					t_list;
 
-typedef	struct s_i2
+typedef struct s_i2
 {
 	int				x;
 	int				y;
@@ -102,6 +102,7 @@ char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoinf(char *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strncat(char *dest, const char *src, size_t n);
@@ -112,13 +113,15 @@ char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_strdup(const char *src);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *h, const char *ne, size_t n);
-char				**ft_strsplit(char const *s, char c);
+char				**ft_strpart(const char *s, const char *d, int *nb);
+char				**ft_strsplit(const char *s, char c, int *nb);
 size_t				ft_strspn(const char *s, const char *accept);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 int					ft_strarr_func(char **arr, void (*f)(char **));
 void				ft_strrev(char *str);
 void				ft_strnrev(char *str, int len);
+char				*ft_strcut(char *str, int start, int end);
 /*
 ** --------------------------- FT_PUT functions -------------------------
 */

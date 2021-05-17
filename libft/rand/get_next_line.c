@@ -6,32 +6,44 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:20:31 by nneronin          #+#    #+#             */
-/*   Updated: 2020/09/26 12:22:57 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 16:35:28 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_string_edit(char **file, const int fd, char **line, int char_nbr)
+static int	contains_zero(char *buf, int size)
 {
-	int		x;
-	char	*temp_storage;
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (buf[i] == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static int	string_edit(char **file, const int fd, char **line, int char_nbr)
+{
+	int		i;
 
 	if (char_nbr == 0 && file[fd][0] == '\0')
 	{
 		ft_strdel(&file[fd]);
 		return (0);
 	}
-	if (char_nbr < 0)
-		return (-1);
-	if (((x = ft_strchrlen(file[fd], '\n')) != 0) || (file[fd][0] == '\n'))
+	i = ft_strchrlen(file[fd], '\n');
+	if (i || file[fd][0] == '\n')
 	{
-		*line = ft_strsub(file[fd], 0, x);
-		temp_storage = ft_strdup(file[fd] + x + 1);
-		free(file[fd]);
-		file[fd] = temp_storage;
+		*line = ft_strsub(file[fd], 0, i);
+		file[fd] = ft_strcut(file[fd], i + 1, 0);
+		return (1);
 	}
-	else if ((x = ft_strchrlen(file[fd], '\0')) != 0)
+	i = ft_strchrlen(file[fd], '\0');
+	if (i)
 	{
 		*line = ft_strdup(file[fd]);
 		file[fd][0] = '\0';
@@ -39,25 +51,25 @@ static int	ft_string_edit(char **file, const int fd, char **line, int char_nbr)
 	return (1);
 }
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static char		*file[4096];
+	static char		*file[GNL_FILE_NB];
 	char			read_buffer[GNL_BUFF_SIZE + 1];
 	int				char_nbr;
-	char			*temp_storage;
 
-	if (fd < 0 || !line || GNL_BUFF_SIZE < 1 || fd > 4096)
+	if (fd < 0 || !line || GNL_BUFF_SIZE < 1 || read(fd, read_buffer, 0) < 0)
 		return (-1);
 	if (file[fd] == 0)
 		file[fd] = ft_strnew(0);
-	while ((char_nbr = read(fd, read_buffer, GNL_BUFF_SIZE)) > 0)
+	while (!ft_strchr(file[fd], '\n'))
 	{
-		read_buffer[char_nbr] = '\0';
-		temp_storage = ft_strjoin(file[fd], read_buffer);
-		free(file[fd]);
-		file[fd] = temp_storage;
-		if (ft_strchr(read_buffer, '\n'))
+		char_nbr = read(fd, read_buffer, GNL_BUFF_SIZE);
+		if (char_nbr < 0)
+			return (-1);
+		if (!char_nbr || contains_zero(read_buffer, char_nbr))
 			break ;
+		read_buffer[char_nbr] = '\0';
+		file[fd] = ft_strjoinf(file[fd], read_buffer);
 	}
-	return (ft_string_edit(file, fd, line, char_nbr));
+	return (string_edit(file, fd, line, char_nbr));
 }
