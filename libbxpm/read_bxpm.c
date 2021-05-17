@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 13:20:28 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/12 11:46:48 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 17:32:08 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	read_bxpm_header(int fd, t_bxpm *bxpm)
 {
-	unsigned char header[20];
+	unsigned char	header[20];
 
 	read(fd, header, 20);
 	bxpm->w = read_int32(header, 0);
@@ -25,7 +25,6 @@ void	read_bxpm_header(int fd, t_bxpm *bxpm)
 	bxpm->clr = malloc(sizeof(uint32_t) * bxpm->clr_nb);
 	bxpm->pix = malloc(sizeof(unsigned short) * bxpm->pix_nb);
 }
-
 
 void	read_bxpm_clr(int fd, t_bxpm *bxpm)
 {
@@ -46,7 +45,6 @@ void	read_bxpm_clr(int fd, t_bxpm *bxpm)
 	free(clr);
 }
 
-
 void	read_bxpm_pix(int fd, t_bxpm *bxpm)
 {
 	int				i;
@@ -55,7 +53,7 @@ void	read_bxpm_pix(int fd, t_bxpm *bxpm)
 
 	i = 0;
 	x = 0;
-   	pix = malloc(sizeof(unsigned char) * (bxpm->pix_nb * 2));
+	pix = malloc(sizeof(unsigned char) * (bxpm->pix_nb * 2));
 	read(fd, pix, bxpm->pix_nb * 2);
 	while (i < bxpm->pix_nb * 2)
 	{

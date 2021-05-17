@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 14:20:47 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/12 12:09:10 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 17:29:45 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ unsigned short	check_clr(t_bxpm *bxpm, uint32_t clr)
 
 void	get_bxpm_pixel_data(t_bxpm *bxpm, void *pixels)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	bxpm->clr = malloc(sizeof(uint32_t));
@@ -52,7 +52,7 @@ void	get_bxpm_pixel_data(t_bxpm *bxpm, void *pixels)
 
 t_bxpm	*surface_to_bxpm(int w, int h, int bpp, void *pixels)
 {
-	t_bxpm *bxpm;
+	t_bxpm	*bxpm;
 
 	bxpm = ft_memalloc(sizeof(t_bxpm));
 	get_bxpm_header(bxpm, w, h, bpp);

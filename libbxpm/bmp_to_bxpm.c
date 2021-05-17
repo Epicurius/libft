@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 16:45:27 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/12 12:07:59 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 17:05:03 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	bxpm_data(t_bxpm *bxpm, t_bmp *bmp)
 
 	x = 0;
 	y = bmp->header.height_px - 1;
-	// OS/2 OS22XBITMAPHEADER (BITMAPINFOHEADER2)
 	byte = 0;
 	if (bxpm->bpp == 32)
 		byte = 16;

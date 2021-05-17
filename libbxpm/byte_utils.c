@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 13:37:46 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/10 10:48:30 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/17 17:24:51 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ uint32_t	read_color24(unsigned char *str, int i)
 
 int32_t	read_int16(unsigned char *str, int i)
 {
-	int32_t res;
+	int32_t	res;
 
 	res = str[i + 1] << 8
 		| str[i];
