@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 17:15:02 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/17 17:44:31 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/05/20 16:10:25 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ int32_t					read_int16(unsigned char *str, int index);
 uint32_t				read_color32(unsigned char *str, int index);
 uint32_t				read_color24(unsigned char *str, int i);
 unsigned int			bpp_clr(double byte, unsigned char *str, uint32_t bpp);
+void					free_bxpm(t_bxpm *bxpm);
+void					free_bmp(t_bmp *bmp);
 
 #endif

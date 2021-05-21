@@ -6,7 +6,7 @@
 #    By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 10:44:15 by nneronin          #+#    #+#              #
-#    Updated: 2021/05/12 12:08:38 by nneronin         ###   ########.fr        #
+#    Updated: 2021/05/20 16:09:52 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS	=	read_bmp.c \
 			bmp_to_bxpm.c \
 			write_bmp.c \
 			write_bxpm.c \
-			byte_utils.c
+			byte_utils.c \
+			free.c
 
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -Wunused-variable -Wno-unused-result
