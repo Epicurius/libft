@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/17 18:27:42 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/06/12 10:42:53 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 # include <stdint.h>
 # include <stdbool.h>
 
+# define BOLD		"\x1b[1m"
+# define UND		"\x1b[4m"
 # define RESET		"\x1b[00m"
-# define BOLD		"\x1b[10m"
-# define CURS		"\x1b[30m"
-# define UND		"\x1b[40m"
 # define RED		"\x1b[31m"
 # define GREEN		"\x1b[32m"
 # define YELLOW		"\x1b[33m"

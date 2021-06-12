@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/17 15:56:58 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/06/07 16:06:07 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,25 @@ typedef struct s_xyz
 	double			y;
 	double			z;
 }					t_xyz;
+/*
+# define RB_RED		1
 
+typedef struct s_tree
+{
+	char			*name;
+	struct s_tree	*left;
+	struct s_tree 	*right;
+	struct s_tree	*parent;
+	size_t			flag;
+	void			*content;
+}				t_tree;
+
+int		rb_insert(t_tree **root, t_tree *node);
+void	*find_node(t_tree *root, char *name);
+void	rb_create_node(char *name, void *content);
+void	balance_black_uncle_right(t_tree **node, int am_i_left);
+void	balance_black_uncle_left(t_tree **node, int am_i_left);
+*/
 /*
 ** -------------------------------- FT_LST ------------------------------------
 */
