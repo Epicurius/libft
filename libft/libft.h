@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/06/07 16:06:07 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/06/16 16:18:59 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,6 @@ typedef struct s_list
 	struct s_list	*prev;
 }					t_list;
 
-typedef struct s_i2
-{
-	int				x;
-	int				y;
-}					t_i2;
-
-typedef struct s_xyz
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_xyz;
 /*
 # define RB_RED		1
 
@@ -163,9 +151,6 @@ double				ft_pow(double n, int pow);
 long double			ft_long_pow(long double n, int pow);
 float				ft_pythagoras(float a, float b);
 double				ft_clamp(double x, double a, double b);
-t_xyz				ft_sum_xyz(t_xyz a, t_xyz b);
-int					ft_compare_xyz(t_xyz a, t_xyz b);
-t_xyz				ft_xyz(double x, double y, double z);
 /*
 ** --------------------------- RAND functions -------------------------
 */
