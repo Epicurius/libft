@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/06/16 16:18:59 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/06/27 15:11:03 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # define GNL_BUFF_SIZE 60
+# define FTS_BUFF_SIZE 1000
 # define GNL_FILE_NB 128
 
 # define TRUE			1
@@ -128,6 +129,7 @@ int					ft_strarr_func(char **arr, void (*f)(char **));
 void				ft_strrev(char *str);
 void				ft_strnrev(char *str, int len);
 char				*ft_strcut(char *str, int start, int end);
+char				*ft_readtostr(int fd);
 /*
 ** --------------------------- FT_PUT functions -------------------------
 */
@@ -166,5 +168,7 @@ void				ft_bzero(void *s, size_t n);
 int					ft_atoi(const char *str);
 double				ft_atof(const char *str);
 double				ft_timer_end(void);
+char				*ft_fdtostr(int fd, int i);
+char				*ft_filetostr(char *file);
 
 #endif
