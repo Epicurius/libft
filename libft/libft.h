@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@stuent.hive.fi>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/06/16 16:18:59 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/06/20 18:11:18 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int					ft_strarr_func(char **arr, void (*f)(char **));
 void				ft_strrev(char *str);
 void				ft_strnrev(char *str, int len);
 char				*ft_strcut(char *str, int start, int end);
+char				*ft_readtostr(int fd);
 /*
 ** --------------------------- FT_PUT functions -------------------------
 */
