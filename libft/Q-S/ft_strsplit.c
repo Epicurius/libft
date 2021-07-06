@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:01:20 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/17 11:38:53 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/07/06 09:33:24 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	wc_and_cc(char *str, char c, int *wc, int *cc)
 	}
 }
 
-char	**split(char *str, char c, int wc, int cc)
+static char	**split(char *str, char c, int wc, int cc)
 {
 	void		*arr;
 	const char	**ptrs;
