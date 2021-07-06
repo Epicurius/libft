@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 15:06:26 by nneronin          #+#    #+#             */
-/*   Updated: 2021/06/27 15:14:28 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:56:26 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 
 char	*ft_fdtostr(int fd, int i)
 {
-	char		*buf;
-	char		*ret;
-	ssize_t		bytes_read;
+	char			*buf;
+	char			*ret;
+	unsigned int	bytes_read;
 
 	buf = malloc(FTS_BUFF_SIZE);
 	if (!buf)
-		return (NULL);
+		return (0);
 	bytes_read = read(fd, buf, FTS_BUFF_SIZE);
-	if (bytes_read > 0)
+	if (bytes_read == FTS_BUFF_SIZE)
 		ret = ft_fdtostr(fd, i + FTS_BUFF_SIZE);
 	else
-		ret = (char *)malloc(i + 1);
+	{
+		ret = (char *)malloc(i + bytes_read + 1);
+		ret[i + bytes_read] = '\0';
+	}
 	if (bytes_read < 0 || !ret)
-		return (NULL);
+		return (0);
 	if (ret && bytes_read)
 		ft_memcpy(ret + i, buf, bytes_read);
 	else
