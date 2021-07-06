@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/06/12 10:42:53 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:59:06 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void				fill_buffer(t_pf *p, const char *s, unsigned int size);
 void				set_float_padding(t_pf *p, long i_part, long double nb);
 void				set_float_padding(t_pf *p, long i_part, long double nb);
 void				set_zeros_base(t_pf *p, unsigned long nb, int base_len);
+void				error_msg(const char *restrict format, ...);
 
 #endif
