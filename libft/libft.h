@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/07/06 09:36:50 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/07/16 10:19:18 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 
 typedef struct s_list
 {
-	struct s_list	*next;
 	void			*content;
 	size_t			content_size;
 	struct s_list	*prev;
+	struct s_list	*next;
 }					t_list;
 
 /*-------------------------------A-F------------------------------------------*/
