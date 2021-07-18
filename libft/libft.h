@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/07/16 12:14:40 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/07/18 15:45:16 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ float				ft_pythagoras(float a, float b);
 
 /*-------------------------------Q-S------------------------------------------*/
 char				*ft_readtostr(int fd);
-void				*ft_realloc(void *ptr, size_t new_size);
-void				*ft_realloc2(void *ptr, size_t old_size, size_t new_size);
+void				*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char				*ft_reverse(char *s);
 int					ft_strarr_func(char **arr, void (*f)(char **));
 char				*ft_strcat(char *dest, const char *src);
