@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/07/18 15:45:16 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/07/21 09:02:09 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int					ft_atoi(const char *str);
 int					ft_atoi_base(const char *str, int str_base);
 void				ft_bzero(void *str, size_t n);
 double				ft_clamp(double x, double a, double b);
+int					ft_compile_string(char *name, char *code);
 t_list				*ft_dellstnode(t_list **lst, t_list *del);
 char				*ft_fdtostr(int fd, int i);
 char				*ft_filetostr(char *file);
