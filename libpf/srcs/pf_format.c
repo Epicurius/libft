@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:17:33 by nneronin          #+#    #+#             */
-/*   Updated: 2021/05/17 18:27:42 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/12 15:08:21 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	is_valid_specifier(t_pf *p)
 {
-	if (!(ft_strchr("diouxXcsf", *p->format)))
+	if (!(ft_strchr("diouxXcsfp", *p->format)))
 	{
 		p->invalid = p->format;
 		if (*p->format == '\0')

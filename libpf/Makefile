@@ -6,7 +6,7 @@
 #    By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 13:48:12 by nneronin          #+#    #+#              #
-#    Updated: 2021/07/06 14:52:06 by nneronin         ###   ########.fr        #
+#    Updated: 2021/08/12 15:07:26 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SOURCES =	pf_printf.c\
 	   		pf_nbr_u.c\
 	   		pf_nbr_o.c\
 	   		pf_nbr_x.c\
+			pf_nbr_p.c\
 	   		pf_percent.c\
 	   		pf_float.c\
 	   		pf_base.c\
@@ -49,21 +50,21 @@ OBJS = $(SOURCES:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -I $(IDIR) -I ../libft
 
 all: $(NAME)
-	@printf $(CYAN)"[INFO]	$(NAME) ready!\n"$(RESET)
+	@printf $(CYAN)"[INFO]	$(NAME) is up to date!\n"$(RESET)
 
 $(NAME): $(SRCS)
 	@gcc -c $(SRCS) $(CFLAGS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@/bin/rm -f $(OBJS)
+	@rm -f $(OBJS)
 	@printf $(GREEN)"Compiling $(NAME)\n"$(RESET)
 
 clean:
-	@/bin/rm -f $(OBJS)
+	@rm -f $(OBJS)
 	@printf $(CYAN)"[INFO]	$(NAME) cleaned\n"$(RESET)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

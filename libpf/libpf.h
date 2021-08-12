@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/07/06 14:59:06 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/12 15:07:07 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int					pf_nbr_inf(t_pf *p, long double nb);
 void				pf_nbr_o(t_pf *p);
 void				pf_nbr_u(t_pf *p);
 void				pf_nbr_x(t_pf *p);
+void				pf_nbr_p(t_pf *p);
 void				pf_putpercent(t_pf *p);
 void				pf_str(t_pf *p);
 void				space_padding(t_pf *p, int extra);
