@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/13 10:33:50 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:35:27 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@
 # include <errno.h>
 # include <stdint.h>
 # include <stdbool.h>
-
-# define BOLD		"\x1b[1m"
-# define UND		"\x1b[4m"
-# define RESET		"\x1b[00m"
-# define RED		"\x1b[31m"
-# define GREEN		"\x1b[32m"
-# define YELLOW		"\x1b[33m"
-# define BLUE		"\x1b[34m"
-# define MAGENTA	"\x1b[35m"
-# define CYAN		"\x1b[36m"
-# define WHITE		"\x1b[37m"
 
 # define PF_BUFF_SIZE	2048
 
