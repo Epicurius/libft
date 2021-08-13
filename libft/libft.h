@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:56:18 by nneronin          #+#    #+#             */
-/*   Updated: 2021/07/21 09:02:09 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/13 13:58:13 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
+
+const static char	*g_hextable = "0123456789abcdef";
 
 /*-------------------------------A-F------------------------------------------*/
 double				ft_atof(const char *str);
@@ -88,6 +90,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putnchar(char c, int nbr);
 void				ft_putnstr(char *str, int n);
 void				ft_putstr(char const *s);
+void				ft_puthex(unsigned char c);
 void				ft_putstr_fd(char const *s, int fd);
 float				ft_pythagoras(float a, float b);
 
