@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:17:33 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/12 15:08:21 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/13 08:56:03 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	pf_read_format(const char *format, t_pf *p)
 			specifier_sorter(p, is_valid_specifier(p));
 		}
 		else if (*p->format == '{')
-			pf_colors(p);
+			pf_specials(p);
 		else
 			fill_buffer(p, p->format, 1);
 		reset_options(p);

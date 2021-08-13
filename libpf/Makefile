@@ -6,7 +6,7 @@
 #    By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/23 13:48:12 by nneronin          #+#    #+#              #
-#    Updated: 2021/08/12 15:07:26 by nneronin         ###   ########.fr        #
+#    Updated: 2021/08/13 10:04:33 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ SOURCES =	pf_printf.c\
 	   		pf_float.c\
 	   		pf_base.c\
 	   		pf_nbr_inf.c\
-	   		pf_colors.c\
 	   		pf_reset.c\
+			pf_specials.c\
 			error_msg.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
