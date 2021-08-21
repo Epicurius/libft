@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 10:15:12 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/13 10:33:45 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/13 11:08:30 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,31 @@ static const t_pf_style	g_pf_styles[11] =
 	{"{INVERT}", "\x1b[7m", 8}
 };
 
-static const t_pf_emoji	g_pf_emoji[28] =
+static const t_pf_emoji	g_pf_emoji[23] =
 {
+	{"{OK}", 0x1F44C, 4},
+	{"{ERROR}", 0x26D4, 7},
+	{"{UP}", 0x2B06, 4},
+	{"{DOWN}", 0x2B07, 6},
+	{"{RIGHT}", 0x27A1, 7},
+	{"{LEFT}", 0x2B05, 6},
+	{"{CHECK}", 0x2705, 7},
+	{"{WARNING}", 0x26A0, 9},
+	{"{TALK}", 0x1F4AC, 6},
+	{"{NERD}", 0x1F913, 6},
 	{"{NEUTRAL}", 0x1f610, 9},
 	{"{TEARS}", 0x1f602, 7},
 	{"{HAHA}", 0x1f606, 6},
 	{"{FROWN}", 0x1f627, 7},
-	{"{CRY}", 0x1f62d, 5},
 	{"{FEAR}", 0x1f628, 6},
 	{"{SCREAM}", 0x1f631, 8},
 	{"{DEAD}", 0x1f635, 6},
 	{"{THINKING}", 0x1f914, 10},
 	{"{PRAY}", 0x1f64f, 6},
-	{"{TOILET}", 0x1f6bd, 8},
 	{"{POOP}", 0x1f4a9, 6},
-	{"{POLICE}", 0x1f693, 8},
 	{"{ROCKET}", 0x1f680, 8},
-	{"{FLOPPY}", 0x1f4be, 8},
 	{"{BOMB}", 0x1f4a3, 6},
-	{"{CHEESE}", 0x1f9c0, 8},
-	{"{BURGER}", 0x1f354, 8},
-	{"{PIZZA}", 0x1f355, 7},
-	{"{DOG}", 0x1f436, 5},
-	{"{CAT}", 0x1f431, 5},
-	{"{COW}", 0x1f42e, 5},
-	{"{PIG}", 0x1f437, 5},
-	{"{CHICKEN}", 0x1f414, 9},
-	{"{TURKEY}", 0x1f983, 8},
-	{"{UNICORN}", 0x1f984, 9},
-	{"{ROBOT}", 0x1f916, 7},
-	{"{ALIEN}", 0x1f47e, 7}
+	{"{SKULL}", 0x2620, 7}
 };
 
 static int	color_code(t_pf *p, int i)
@@ -142,7 +137,7 @@ static void	pf_style(t_pf *p)
 		}
 	}
 	i = -1;
-	while (++i < 28)
+	while (++i < 23)
 	{
 		if (ft_strnequ(g_pf_emoji[i].str, &*p->format, g_pf_emoji[i].len))
 		{

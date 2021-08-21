@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/13 10:35:27 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/21 10:44:04 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <errno.h>
 # include <stdint.h>
 # include <stdbool.h>
+
+# define FT_LOG_ERROR(...)	error_msg(__FILE__, __LINE__, __VA_ARGS__)
 
 # define PF_BUFF_SIZE	2048
 
