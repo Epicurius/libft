@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 10:15:12 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/13 11:08:30 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/21 10:49:05 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,12 @@ static int	color_code(t_pf *p, int i)
 		len = 3;
 	if (len == 0 || !ft_strnequ((p->format + i + len), "}", 1))
 		return (0);
-	fill_buffer(p, "\x1b[38;5;", 7);
-	fill_buffer(p, p->format + i, len);
-	fill_buffer(p, "m", 1);
+	if (p->fd < 3)
+	{
+		fill_buffer(p, "\x1b[38;5;", 7);
+		fill_buffer(p, p->format + i, len);
+		fill_buffer(p, "m", 1);
+	}
 	p->format += i + len + 1 - 1;
 	return (1);
 }
@@ -98,6 +101,8 @@ static void	fill_buffer_1(t_pf *p, char s)
 
 static void	ft_wchar(t_pf *p, wchar_t wc)
 {
+	if (p->fd >= 3)
+		return ;
 	if (wc <= 0x7F)
 		fill_buffer_1(p, (char)wc);
 	else if (wc <= 0x7FF)
@@ -120,10 +125,8 @@ static void	ft_wchar(t_pf *p, wchar_t wc)
 	}
 }
 
-static void	pf_style(t_pf *p)
+static void	pf_style(t_pf *p, int i)
 {
-	int	i;
-
 	i = -1;
 	if (ft_strnequ(&*p->format, "{CLR:", 5) && color_code(p, 5))
 		return ;
@@ -131,7 +134,8 @@ static void	pf_style(t_pf *p)
 	{
 		if (ft_strnequ(g_pf_styles[i].str, &*p->format, g_pf_styles[i].len))
 		{
-			fill_buffer(p, g_pf_styles[i].code, 5);
+			if (p->fd < 3)
+				fill_buffer(p, g_pf_styles[i].code, 5);
 			p->format += g_pf_styles[i].len - 1;
 			return ;
 		}
@@ -152,7 +156,7 @@ static void	pf_style(t_pf *p)
 void	pf_specials(t_pf *p)
 {
 	if (*p->format == '{' && (&*p->format + 1) && ft_isupper(*(p->format + 1)))
-		pf_style(p);
+		pf_style(p, -1);
 	else
 		fill_buffer(p, p->format, 1);
 }
