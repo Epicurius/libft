@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:50:02 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/21 11:41:51 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/21 11:47:24 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ void	error_msg(const char *restrict format, ...)
 	exit(1);
 }
 
-void	pf_error(char *file, int line, const char *restrict format, ...)
+void	pf_error(char *file, char *func, int line,
+		const char *restrict format, ...)
 {
 	t_pf	p;
 	char	buff[PF_BUFF_SIZE];
 
-	ft_printf("{RED}[ERROR]{RESET} %s : line %d\n", file, line);
+	ft_printf("{RED}[ERROR]{RESET} %s : %s: %d\n", file, func, line);
 	if (format)
 	{
 		write(1, "\t", 1);
@@ -54,12 +55,13 @@ void	pf_error(char *file, int line, const char *restrict format, ...)
 	exit(1);
 }
 
-void	pf_info(char *file, int line, const char *restrict format, ...)
+void	pf_info(char *file, char *func, int line,
+		const char *restrict format, ...)
 {
 	t_pf	p;
 	char	buff[PF_BUFF_SIZE];
 
-	ft_printf("{CYAN}[INFO]{RESET} %s : line %d\n", file, line);
+	ft_printf("{CYAN}[INFO]{RESET} %s : %s : %d\n", file, func, line);
 	if (format)
 	{
 		write(1, "\t", 1);
