@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/21 10:44:04 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/21 11:43:19 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <stdint.h>
 # include <stdbool.h>
 
-# define FT_LOG_ERROR(...)	error_msg(__FILE__, __LINE__, __VA_ARGS__)
+# define FT_ERROR(...)	pf_error(__FILE__, __LINE__, __VA_ARGS__)
+# define FT_INFO(...)	pf_info(__FILE__, __LINE__, __VA_ARGS__)
 
 # define PF_BUFF_SIZE	2048
 
@@ -94,6 +95,10 @@ void				set_float_padding(t_pf *p, long i_part, long double nb);
 void				set_float_padding(t_pf *p, long i_part, long double nb);
 void				set_zeros_base(t_pf *p, unsigned long nb, int base_len);
 void				error_msg(const char *restrict format, ...);
+void				pf_error(char *file, int line,
+						const char *restrict format, ...);
+void				pf_info(char *file, int line,
+						const char *restrict format, ...);
 
 typedef struct s_pf_style
 {
