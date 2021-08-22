@@ -6,7 +6,7 @@
 #    By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/18 11:13:47 by nneronin          #+#    #+#              #
-#    Updated: 2021/07/06 09:13:58 by nneronin         ###   ########.fr        #
+#    Updated: 2021/08/22 10:22:01 by nneronin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RESET			:= "\e[0m"
 
 NAME = libft.a
 IDIR = .
-CDIR = A-F G-L M-P Q-S T-Z
+CDIR = srcs
 SRCS := $(shell find $(CDIR) -type f | grep -E "\.c$$")
 OBJS = $(notdir $(SRCS:.c=.o))
 CFLAGS = -Wall -Wextra -Werror -I $(IDIR)

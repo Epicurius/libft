@@ -6,7 +6,7 @@
 /*   By: nneronin <nneronin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 11:14:30 by nneronin          #+#    #+#             */
-/*   Updated: 2021/08/21 11:48:28 by nneronin         ###   ########.fr       */
+/*   Updated: 2021/08/22 10:21:49 by nneronin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ typedef struct s_flag
 typedef struct s_pf
 {
 	va_list			ap;
+	t_flag			flag;
+	t_padding		padding;
 	char			*format;
 	char			*buffer;
-	uint8_t			caps;
+	const char		*invalid;
 	int				fd;
 	int				chars;
 	int				print_len;
-	const char		*invalid;
-	t_flag			flag;
 	int				min_width;
 	int				precision;
 	int				size_bytes;
-	t_padding		padding;
+	uint8_t			caps;
 }					t_pf;
 
 int					ft_printf(const char *restrict format, ...);
