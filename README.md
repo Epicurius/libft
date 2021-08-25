@@ -10,10 +10,12 @@
 		Width:			(number) *
 		Precision:		.number .*
 		Spec. length:		hh h l ll z j L
+
 	Personal addons:
 		Color macro:		{RED} {GREEN} {RESET} etc.
 		Custom color:		{CLR:'number'}
 		Emoji:			{HAHA} {BOMB} {SKULL} etc.
+		
 	Extra:
 		error_msg():	Prints custom error and exit.
 		Macro FT_ERROR:	prints file, function, line and custom message and exit().
